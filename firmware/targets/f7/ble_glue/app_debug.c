@@ -33,7 +33,8 @@ PLACE_IN_SECTION("MB_MEM2")
 ALIGN(4) static SHCI_C2_DEBUG_TracesConfig_t APPD_TracesConfig = {0, 0, 0, 0};
 PLACE_IN_SECTION("MB_MEM2")
 ALIGN(4)
-static SHCI_C2_DEBUG_GeneralConfig_t APPD_GeneralConfig = {BLE_DTB_CFG, SYS_DBG_CFG1, {0, 0}};
+static SHCI_C2_DEBUG_GeneralConfig_t APPD_GeneralConfig =
+    {BLE_DTB_CFG, SYS_DBG_CFG1, {0, 0}, 0, 0, 0, 0, 0};
 
 /**
  * THE DEBUG ON GPIO FOR CPU2 IS INTENDED TO BE USED ONLY ON REQUEST FROM ST SUPPORT
@@ -195,14 +196,14 @@ static void APPD_SetCPU2GpioConfig(void) {
         gpio_config.Pin = gpiob_pin_list;
         LL_C2_AHB2_GRP1_EnableClock(LL_C2_AHB2_GRP1_PERIPH_GPIOB);
         LL_GPIO_Init(GPIOB, &gpio_config);
-        LL_GPIO_ResetOutputPin(GPIOB, gpioa_pin_list);
+        LL_GPIO_ResetOutputPin(GPIOB, gpiob_pin_list);
     }
 
     if(gpioc_pin_list != 0) {
         gpio_config.Pin = gpioc_pin_list;
         LL_C2_AHB2_GRP1_EnableClock(LL_C2_AHB2_GRP1_PERIPH_GPIOC);
         LL_GPIO_Init(GPIOC, &gpio_config);
-        LL_GPIO_ResetOutputPin(GPIOC, gpioa_pin_list);
+        LL_GPIO_ResetOutputPin(GPIOC, gpioc_pin_list);
     }
 }
 

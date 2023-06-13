@@ -56,6 +56,8 @@ static int32_t __furi_thread_stdout_flush(FuriThread* thread);
 
 /** Catch threads that are trying to exit wrong way */
 __attribute__((__noreturn__)) void furi_thread_catch() { //-V1082
+    // If you're here it means you're probably doing something wrong
+    // with critical sections or with scheduler state
     asm volatile("nop"); // extra magic
     furi_crash("You are doing it wrong"); //-V779
     __builtin_unreachable();
@@ -164,10 +166,13 @@ FuriThread* furi_thread_alloc_ex(
 
 void furi_thread_free(FuriThread* thread) {
     furi_assert(thread);
-    furi_assert(thread->state == FuriThreadStateStopped);
 
-    if(thread->name) free((void*)thread->name);
-    if(thread->appid) free((void*)thread->appid);
+    // Ensure that use join before free
+    furi_assert(thread->state == FuriThreadStateStopped);
+    furi_assert(thread->task_handle == NULL);
+
+    if(thread->name) free(thread->name);
+    if(thread->appid) free(thread->appid);
     furi_string_free(thread->output.buffer);
 
     free(thread);
@@ -176,14 +181,14 @@ void furi_thread_free(FuriThread* thread) {
 void furi_thread_set_name(FuriThread* thread, const char* name) {
     furi_assert(thread);
     furi_assert(thread->state == FuriThreadStateStopped);
-    if(thread->name) free((void*)thread->name);
+    if(thread->name) free(thread->name);
     thread->name = name ? strdup(name) : NULL;
 }
 
 void furi_thread_set_appid(FuriThread* thread, const char* appid) {
     furi_assert(thread);
     furi_assert(thread->state == FuriThreadStateStopped);
-    if(thread->appid) free((void*)thread->appid);
+    if(thread->appid) free(thread->appid);
     thread->appid = appid ? strdup(appid) : NULL;
 }
 
@@ -276,7 +281,7 @@ void furi_thread_cleanup_tcb_event(TaskHandle_t task) {
     if(thread) {
         // clear thread local storage
         vTaskSetThreadLocalStoragePointer(task, 0, NULL);
-
+        furi_assert(thread->task_handle == task);
         thread->task_handle = NULL;
     }
 }
@@ -332,7 +337,6 @@ FuriThreadId furi_thread_get_current_id() {
 
 FuriThread* furi_thread_get_current() {
     FuriThread* thread = pvTaskGetThreadLocalStoragePointer(NULL, 0);
-    furi_assert(thread != NULL);
     return thread;
 }
 
@@ -579,24 +583,22 @@ static int32_t __furi_thread_stdout_flush(FuriThread* thread) {
     return 0;
 }
 
-bool furi_thread_set_stdout_callback(FuriThreadStdoutWriteCallback callback) {
+void furi_thread_set_stdout_callback(FuriThreadStdoutWriteCallback callback) {
     FuriThread* thread = furi_thread_get_current();
-
+    furi_assert(thread);
     __furi_thread_stdout_flush(thread);
     thread->output.write_callback = callback;
-
-    return true;
 }
 
 FuriThreadStdoutWriteCallback furi_thread_get_stdout_callback() {
     FuriThread* thread = furi_thread_get_current();
-
+    furi_assert(thread);
     return thread->output.write_callback;
 }
 
 size_t furi_thread_stdout_write(const char* data, size_t size) {
     FuriThread* thread = furi_thread_get_current();
-
+    furi_assert(thread);
     if(size == 0 || data == NULL) {
         return __furi_thread_stdout_flush(thread);
     } else {
@@ -619,7 +621,9 @@ size_t furi_thread_stdout_write(const char* data, size_t size) {
 }
 
 int32_t furi_thread_stdout_flush() {
-    return __furi_thread_stdout_flush(furi_thread_get_current());
+    FuriThread* thread = furi_thread_get_current();
+    furi_assert(thread);
+    return __furi_thread_stdout_flush(thread);
 }
 
 void furi_thread_suspend(FuriThreadId thread_id) {
