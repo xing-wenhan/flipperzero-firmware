@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero Firmware: Globals &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Globals" href="globals_func_p.html" />
+    <link rel="prev" title="Globals" href="globals_func_m.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Auto-generated</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="annotated_data_structures.html">Data Structures</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="files_files.html">Files</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="files.html">File List</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="globals_globals.html">Globals</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="globals_all.html">All</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="globals_func_functions.html">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globals_vars.html">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globals_type.html">Typedefs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globals_enum.html">Enumerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globals_eval.html">Enumerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globals_defs.html">Macros</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UniversalRemotes.html">Universal Remotes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flipper Zero Firmware</a></li>
+          <li class="breadcrumb-item"><a href="files_files.html">Files</a></li>
+          <li class="breadcrumb-item"><a href="globals_globals.html">Globals</a></li>
+          <li class="breadcrumb-item"><a href="globals_func_functions.html">Functions</a></li>
+      <li class="breadcrumb-item active">Flipper Zero Firmware: Globals</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/globals_func_o.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="globals">
+<h1>Globals<a class="headerlink" href="#globals" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flipper Zero Firmware: Globals</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Flipper Zero Firmware
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="contents">
+&#160;
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>onewire_host_alloc()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a0878f31d12c5e2160e09156c45610380">one_wire_host.h</a></li>
+<li>onewire_host_free()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#ab0f5e2c0fdd1c59dd64561fdf13f3000">one_wire_host.h</a></li>
+<li>onewire_host_read()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a25ff855ee779e00fa63cad96918e8ae0">one_wire_host.h</a></li>
+<li>onewire_host_read_bit()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#ae5961cfe46bb7ff2c4ae973da8b7600b">one_wire_host.h</a></li>
+<li>onewire_host_read_bytes()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#ad57936df83a61081a10a34cb7582116c">one_wire_host.h</a></li>
+<li>onewire_host_reset()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#ad3f2b45762ffaa8b0070677cd910dc0a">one_wire_host.h</a></li>
+<li>onewire_host_reset_search()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a28f8ed7fa508d39d8c5c6d173fa76b8e">one_wire_host.h</a></li>
+<li>onewire_host_search()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a67be5bad2b08d6a17714c2e5f8336572">one_wire_host.h</a></li>
+<li>onewire_host_set_overdrive()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a50fb68ef8029e561e22df498c6c02f1c">one_wire_host.h</a></li>
+<li>onewire_host_start()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#afb5326914e2bdfd07f72e1b7ad26a4e2">one_wire_host.h</a></li>
+<li>onewire_host_stop()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#ab473de7dd00cb291a594f2dc97b893d4">one_wire_host.h</a></li>
+<li>onewire_host_target_search()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a2c14a57fb849b1a2ef9ee6c1bc7ad029">one_wire_host.h</a></li>
+<li>onewire_host_write()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a6daf0bb961914f9f431076c3d43a4c5e">one_wire_host.h</a></li>
+<li>onewire_host_write_bit()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a65ede9d01f0b16ebe0ba31a5af340856">one_wire_host.h</a></li>
+<li>onewire_host_write_bytes()&#160;:&#160;<a class="el" href="one__wire__host_8h.html#a5b296459a1b587474f30b03b8898c6f9">one_wire_host.h</a></li>
+<li>onewire_slave_alloc()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#a975b5af76429914501c3bf8a36cd07f4">one_wire_slave.h</a></li>
+<li>onewire_slave_free()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#ac861a71484c883d11466cb9abea511ce">one_wire_slave.h</a></li>
+<li>onewire_slave_receive()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#af8c33bde25027f79a579e0f031f01287">one_wire_slave.h</a></li>
+<li>onewire_slave_receive_bit()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#adf241986902ee993119b12c773d6ea3f">one_wire_slave.h</a></li>
+<li>onewire_slave_send()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#adea38116bf0eb32855937fb08a91eed9">one_wire_slave.h</a></li>
+<li>onewire_slave_send_bit()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#afa6274b7f0050265e6fe4fdf1f5ea2f2">one_wire_slave.h</a></li>
+<li>onewire_slave_set_command_callback()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#ace911cbdd612ca9f0562457e4e5c861d">one_wire_slave.h</a></li>
+<li>onewire_slave_set_overdrive()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#acb9c0a1eab066aa2d4475d55d4e40989">one_wire_slave.h</a></li>
+<li>onewire_slave_set_reset_callback()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#a1b917d935e485ae29b081dfba525fe14">one_wire_slave.h</a></li>
+<li>onewire_slave_set_result_callback()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#a953d0a888a695a30d56a3ddb6f78d995">one_wire_slave.h</a></li>
+<li>onewire_slave_start()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#a2f10cc5c1db811a2e7862f6827a33e03">one_wire_slave.h</a></li>
+<li>onewire_slave_stop()&#160;:&#160;<a class="el" href="one__wire__slave_8h.html#ab0252d41c5850f4293e2e0b2808f17b5">one_wire_slave.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="globals_func_m.html" class="btn btn-neutral float-left" title="Globals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="globals_func_p.html" class="btn btn-neutral float-right" title="Globals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="globals_func_o.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/doxygen/html/globals_func_o.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

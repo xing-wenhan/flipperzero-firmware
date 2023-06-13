@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero Firmware: ProgramState Struct Reference &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UniversalRemotes.html">Universal Remotes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero Firmware: ProgramState Struct Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/struct_program_state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="programstate-struct-reference">
+<h1>ProgramState Struct Reference<a class="headerlink" href="#programstate-struct-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flipper Zero Firmware: ProgramState Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Flipper Zero Firmware
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Data Fields</a>  </div>
+  <div class="headertitle"><div class="title">ProgramState Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:a23fc7a6a62dfb53b8fcf22ecccf902e9"><td class="memItemLeft" align="right" valign="top"><a id="a23fc7a6a62dfb53b8fcf22ecccf902e9" name="a23fc7a6a62dfb53b8fcf22ecccf902e9"></a>
+FuriMutex *&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b></td></tr>
+<tr class="separator:a23fc7a6a62dfb53b8fcf22ecccf902e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3293828faa1e1d6f98e07fefccba0c98"><td class="memItemLeft" align="right" valign="top"><a id="a3293828faa1e1d6f98e07fefccba0c98" name="a3293828faa1e1d6f98e07fefccba0c98"></a>
+MfkeyError&#160;</td><td class="memItemRight" valign="bottom"><b>err</b></td></tr>
+<tr class="separator:a3293828faa1e1d6f98e07fefccba0c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ad54a3e7a81c8f63312b2d2ea5873f7"><td class="memItemLeft" align="right" valign="top"><a id="a8ad54a3e7a81c8f63312b2d2ea5873f7" name="a8ad54a3e7a81c8f63312b2d2ea5873f7"></a>
+MfkeyState&#160;</td><td class="memItemRight" valign="bottom"><b>mfkey_state</b></td></tr>
+<tr class="separator:a8ad54a3e7a81c8f63312b2d2ea5873f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d270225d0e681094a15bdfb1ae64535"><td class="memItemLeft" align="right" valign="top"><a id="a7d270225d0e681094a15bdfb1ae64535" name="a7d270225d0e681094a15bdfb1ae64535"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>cracked</b></td></tr>
+<tr class="separator:a7d270225d0e681094a15bdfb1ae64535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff23728ddc66b19ef8c12a5c78f76245"><td class="memItemLeft" align="right" valign="top"><a id="aff23728ddc66b19ef8c12a5c78f76245" name="aff23728ddc66b19ef8c12a5c78f76245"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>unique_cracked</b></td></tr>
+<tr class="separator:aff23728ddc66b19ef8c12a5c78f76245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66f166125a998b5a14f827b6fe3d9a1b"><td class="memItemLeft" align="right" valign="top"><a id="a66f166125a998b5a14f827b6fe3d9a1b" name="a66f166125a998b5a14f827b6fe3d9a1b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>num_completed</b></td></tr>
+<tr class="separator:a66f166125a998b5a14f827b6fe3d9a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa76a52e99b679fadc0f6dfad44ed7b7d"><td class="memItemLeft" align="right" valign="top"><a id="aa76a52e99b679fadc0f6dfad44ed7b7d" name="aa76a52e99b679fadc0f6dfad44ed7b7d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>total</b></td></tr>
+<tr class="separator:aa76a52e99b679fadc0f6dfad44ed7b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4cb6298868cfe83b4dac65ab110d716"><td class="memItemLeft" align="right" valign="top"><a id="ab4cb6298868cfe83b4dac65ab110d716" name="ab4cb6298868cfe83b4dac65ab110d716"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>dict_count</b></td></tr>
+<tr class="separator:ab4cb6298868cfe83b4dac65ab110d716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f043783f72ee2bf6834b3c3475e8cb"><td class="memItemLeft" align="right" valign="top"><a id="a97f043783f72ee2bf6834b3c3475e8cb" name="a97f043783f72ee2bf6834b3c3475e8cb"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>search</b></td></tr>
+<tr class="separator:a97f043783f72ee2bf6834b3c3475e8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d0b09935c8e03b0e3ace6f41b6aafde"><td class="memItemLeft" align="right" valign="top"><a id="a1d0b09935c8e03b0e3ace6f41b6aafde" name="a1d0b09935c8e03b0e3ace6f41b6aafde"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>eta_timestamp</b></td></tr>
+<tr class="separator:a1d0b09935c8e03b0e3ace6f41b6aafde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93b43842206f9cd79e98a10e6c021735"><td class="memItemLeft" align="right" valign="top"><a id="a93b43842206f9cd79e98a10e6c021735" name="a93b43842206f9cd79e98a10e6c021735"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>eta_total</b></td></tr>
+<tr class="separator:a93b43842206f9cd79e98a10e6c021735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9e041d9cefdb43d915b1274dc48ea4"><td class="memItemLeft" align="right" valign="top"><a id="aff9e041d9cefdb43d915b1274dc48ea4" name="aff9e041d9cefdb43d915b1274dc48ea4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>eta_round</b></td></tr>
+<tr class="separator:aff9e041d9cefdb43d915b1274dc48ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a778f7a4feb3978017540ccb468104d15"><td class="memItemLeft" align="right" valign="top"><a id="a778f7a4feb3978017540ccb468104d15" name="a778f7a4feb3978017540ccb468104d15"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_thread_running</b></td></tr>
+<tr class="separator:a778f7a4feb3978017540ccb468104d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebfc71f4c4ab422feb7a8810f2fc32a4"><td class="memItemLeft" align="right" valign="top"><a id="aebfc71f4c4ab422feb7a8810f2fc32a4" name="aebfc71f4c4ab422feb7a8810f2fc32a4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>close_thread_please</b></td></tr>
+<tr class="separator:aebfc71f4c4ab422feb7a8810f2fc32a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a689dc49125c7d1ac1eed7f939e41a5aa"><td class="memItemLeft" align="right" valign="top"><a id="a689dc49125c7d1ac1eed7f939e41a5aa" name="a689dc49125c7d1ac1eed7f939e41a5aa"></a>
+<a class="el" href="struct_furi_thread.html">FuriThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mfkeythread</b></td></tr>
+<tr class="separator:a689dc49125c7d1ac1eed7f939e41a5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/Users/astrr/flipper/flipperzero-firmware/applications/external/mfkey32/mfkey32.c</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="struct_program_state.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

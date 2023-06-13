@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/furi_hal_include/furi_hal_cortex.h File Reference &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UniversalRemotes.html">Universal Remotes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/furi_hal_include/furi_hal_cortex.h File Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/furi__hal__cortex_8h.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="users-astrr-flipper-flipperzero-firmware-firmware-targets-furi-hal-include-furi-hal-cortex-h-file-reference">
+<h1>/Users/astrr/flipper/flipperzero-firmware/firmware/targets/furi_hal_include/furi_hal_cortex.h File Reference<a class="headerlink" href="#users-astrr-flipper-flipperzero-firmware-firmware-targets-furi-hal-include-furi-hal-cortex-h-file-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/furi_hal_include/furi_hal_cortex.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Flipper Zero Firmware
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_2d21308063d3b2f2dd74554ae427596f.html">targets</a></li><li class="navelem"><a class="el" href="dir_89b676f209c15f876da8182db9fde96b.html">furi_hal_include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">furi_hal_cortex.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>ARM Cortex HAL.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+</div>
+<p><a href="furi__hal__cortex_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cortex timer provides high precision low level expiring timer.  <a href="struct_furi_hal_cortex_timer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ad91be0cd115ffc0a9cd4134a986d109c"><td class="memItemLeft" align="right" valign="top"><a id="ad91be0cd115ffc0a9cd4134a986d109c" name="ad91be0cd115ffc0a9cd4134a986d109c"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>FuriHalCortexComp</b> { <b>FuriHalCortexComp0</b>
+, <b>FuriHalCortexComp1</b>
+, <b>FuriHalCortexComp2</b>
+, <b>FuriHalCortexComp3</b>
+ }</td></tr>
+<tr class="separator:ad91be0cd115ffc0a9cd4134a986d109c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b69a227131e2380c89646d14770651"><td class="memItemLeft" align="right" valign="top"><a id="af2b69a227131e2380c89646d14770651" name="af2b69a227131e2380c89646d14770651"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>FuriHalCortexCompSize</b> { <b>FuriHalCortexCompSizeWord</b> = 0b10
+, <b>FuriHalCortexCompSizeHalfWord</b> = 0b01
+, <b>FuriHalCortexCompSizeByte</b> = 0b00
+ }</td></tr>
+<tr class="separator:af2b69a227131e2380c89646d14770651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcfb87112459733006096e31ad0e3bea"><td class="memItemLeft" align="right" valign="top"><a id="afcfb87112459733006096e31ad0e3bea" name="afcfb87112459733006096e31ad0e3bea"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>FuriHalCortexCompFunction</b> { <b>FuriHalCortexCompFunctionPC</b> = 0b100
+, <b>FuriHalCortexCompFunctionRead</b> = 0b101
+, <b>FuriHalCortexCompFunctionWrite</b> = 0b110
+, <b>FuriHalCortexCompFunctionReadWrite</b> = 0b110
+ }</td></tr>
+<tr class="separator:afcfb87112459733006096e31ad0e3bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a7a87eb22bfcdeba98eb8d47dadbc53b6"><td class="memItemLeft" align="right" valign="top"><a id="a7a87eb22bfcdeba98eb8d47dadbc53b6" name="a7a87eb22bfcdeba98eb8d47dadbc53b6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>furi_hal_cortex_init_early</b> ()</td></tr>
+<tr class="memdesc:a7a87eb22bfcdeba98eb8d47dadbc53b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Early init stage for cortex. <br /></td></tr>
+<tr class="separator:a7a87eb22bfcdeba98eb8d47dadbc53b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af252e1631a091d6ff2ce54dc37149adc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#af252e1631a091d6ff2ce54dc37149adc">furi_hal_cortex_delay_us</a> (uint32_t microseconds)</td></tr>
+<tr class="memdesc:af252e1631a091d6ff2ce54dc37149adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microseconds delay.  <a href="furi__hal__cortex_8h.html#af252e1631a091d6ff2ce54dc37149adc">More...</a><br /></td></tr>
+<tr class="separator:af252e1631a091d6ff2ce54dc37149adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad538925936bf7bb9bb124d103888e2c4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#ad538925936bf7bb9bb124d103888e2c4">furi_hal_cortex_instructions_per_microsecond</a> ()</td></tr>
+<tr class="memdesc:ad538925936bf7bb9bb124d103888e2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get instructions per microsecond count.  <a href="furi__hal__cortex_8h.html#ad538925936bf7bb9bb124d103888e2c4">More...</a><br /></td></tr>
+<tr class="separator:ad538925936bf7bb9bb124d103888e2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3cb9414ad1b611f1c76e49af221229"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#a4e3cb9414ad1b611f1c76e49af221229">furi_hal_cortex_timer_get</a> (uint32_t timeout_us)</td></tr>
+<tr class="memdesc:a4e3cb9414ad1b611f1c76e49af221229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Timer.  <a href="furi__hal__cortex_8h.html#a4e3cb9414ad1b611f1c76e49af221229">More...</a><br /></td></tr>
+<tr class="separator:a4e3cb9414ad1b611f1c76e49af221229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea128ff082fc804671bca1f7662d1db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#aaea128ff082fc804671bca1f7662d1db">furi_hal_cortex_timer_is_expired</a> (<a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a> cortex_timer)</td></tr>
+<tr class="memdesc:aaea128ff082fc804671bca1f7662d1db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if timer expired.  <a href="furi__hal__cortex_8h.html#aaea128ff082fc804671bca1f7662d1db">More...</a><br /></td></tr>
+<tr class="separator:aaea128ff082fc804671bca1f7662d1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819015eb6167241aba8ce0fd85f80b05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#a819015eb6167241aba8ce0fd85f80b05">furi_hal_cortex_timer_wait</a> (<a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a> cortex_timer)</td></tr>
+<tr class="memdesc:a819015eb6167241aba8ce0fd85f80b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for timer expire.  <a href="furi__hal__cortex_8h.html#a819015eb6167241aba8ce0fd85f80b05">More...</a><br /></td></tr>
+<tr class="separator:a819015eb6167241aba8ce0fd85f80b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae64f47fa574a312339898dd7ff4d5847"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#ae64f47fa574a312339898dd7ff4d5847">furi_hal_cortex_comp_enable</a> (FuriHalCortexComp comp, FuriHalCortexCompFunction function, uint32_t value, uint32_t mask, FuriHalCortexCompSize size)</td></tr>
+<tr class="memdesc:ae64f47fa574a312339898dd7ff4d5847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable DWT comparator.  <a href="furi__hal__cortex_8h.html#ae64f47fa574a312339898dd7ff4d5847">More...</a><br /></td></tr>
+<tr class="separator:ae64f47fa574a312339898dd7ff4d5847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9c14f73d109716958e0a891fa787fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__cortex_8h.html#a2d9c14f73d109716958e0a891fa787fe">furi_hal_cortex_comp_reset</a> (FuriHalCortexComp comp)</td></tr>
+<tr class="memdesc:a2d9c14f73d109716958e0a891fa787fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset DWT comparator.  <a href="furi__hal__cortex_8h.html#a2d9c14f73d109716958e0a891fa787fe">More...</a><br /></td></tr>
+<tr class="separator:a2d9c14f73d109716958e0a891fa787fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >ARM Cortex HAL. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae64f47fa574a312339898dd7ff4d5847" name="ae64f47fa574a312339898dd7ff4d5847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae64f47fa574a312339898dd7ff4d5847">&#9670;&nbsp;</a></span>furi_hal_cortex_comp_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_cortex_comp_enable </td>
+          <td>(</td>
+          <td class="paramtype">FuriHalCortexComp&#160;</td>
+          <td class="paramname"><em>comp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FuriHalCortexCompFunction&#160;</td>
+          <td class="paramname"><em>function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FuriHalCortexCompSize&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable DWT comparator. </p>
+<p >Allows to programmatically set instruction/data breakpoints.</p>
+<p >More details on how it works can be found in armv7m official documentation: <a href="https://developer.arm.com/documentation/ddi0403/d/Debug-Architecture/ARMv7-M-Debug/The-Data-Watchpoint-and-Trace-unit/The-DWT-comparators">https://developer.arm.com/documentation/ddi0403/d/Debug-Architecture/ARMv7-M-Debug/The-Data-Watchpoint-and-Trace-unit/The-DWT-comparators</a> <a href="https://developer.arm.com/documentation/ddi0403/d/Debug-Architecture/ARMv7-M-Debug/The-Data-Watchpoint-and-Trace-unit/Comparator-Function-registers&ndash;DWT-FUNCTIONn">https://developer.arm.com/documentation/ddi0403/d/Debug-Architecture/ARMv7-M-Debug/The-Data-Watchpoint-and-Trace-unit/Comparator-Function-registers&amp;ndash;DWT-FUNCTIONn</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">comp</td><td>The Comparator </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">function</td><td>The Comparator Function to use </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>The mask </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d9c14f73d109716958e0a891fa787fe" name="a2d9c14f73d109716958e0a891fa787fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d9c14f73d109716958e0a891fa787fe">&#9670;&nbsp;</a></span>furi_hal_cortex_comp_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_cortex_comp_reset </td>
+          <td>(</td>
+          <td class="paramtype">FuriHalCortexComp&#160;</td>
+          <td class="paramname"><em>comp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset DWT comparator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">comp</td><td>The Comparator </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af252e1631a091d6ff2ce54dc37149adc" name="af252e1631a091d6ff2ce54dc37149adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af252e1631a091d6ff2ce54dc37149adc">&#9670;&nbsp;</a></span>furi_hal_cortex_delay_us()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_cortex_delay_us </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>microseconds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Microseconds delay. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">microseconds</td><td>The microseconds to wait </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad538925936bf7bb9bb124d103888e2c4" name="ad538925936bf7bb9bb124d103888e2c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad538925936bf7bb9bb124d103888e2c4">&#9670;&nbsp;</a></span>furi_hal_cortex_instructions_per_microsecond()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t furi_hal_cortex_instructions_per_microsecond </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get instructions per microsecond count. </p>
+<dl class="section return"><dt>Returns</dt><dd>instructions per microsecond count </dd></dl>
+
+</div>
+</div>
+<a id="a4e3cb9414ad1b611f1c76e49af221229" name="a4e3cb9414ad1b611f1c76e49af221229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e3cb9414ad1b611f1c76e49af221229">&#9670;&nbsp;</a></span>furi_hal_cortex_timer_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a> furi_hal_cortex_timer_get </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout_us</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Timer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout_us</td><td>The expire timeout in us</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="struct_furi_hal_cortex_timer.html" title="Cortex timer provides high precision low level expiring timer.">FuriHalCortexTimer</a> </dd></dl>
+
+</div>
+</div>
+<a id="aaea128ff082fc804671bca1f7662d1db" name="aaea128ff082fc804671bca1f7662d1db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaea128ff082fc804671bca1f7662d1db">&#9670;&nbsp;</a></span>furi_hal_cortex_timer_is_expired()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool furi_hal_cortex_timer_is_expired </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a>&#160;</td>
+          <td class="paramname"><em>cortex_timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if timer expired. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cortex_timer</td><td>The <a class="el" href="struct_furi_hal_cortex_timer.html" title="Cortex timer provides high precision low level expiring timer.">FuriHalCortexTimer</a></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if expired </dd></dl>
+
+</div>
+</div>
+<a id="a819015eb6167241aba8ce0fd85f80b05" name="a819015eb6167241aba8ce0fd85f80b05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a819015eb6167241aba8ce0fd85f80b05">&#9670;&nbsp;</a></span>furi_hal_cortex_timer_wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_cortex_timer_wait </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_furi_hal_cortex_timer.html">FuriHalCortexTimer</a>&#160;</td>
+          <td class="paramname"><em>cortex_timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for timer expire. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cortex_timer</td><td>The <a class="el" href="struct_furi_hal_cortex_timer.html" title="Cortex timer provides high precision low level expiring timer.">FuriHalCortexTimer</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="furi__hal__cortex_8h.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/doxygen/html/furi__hal__cortex_8h.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

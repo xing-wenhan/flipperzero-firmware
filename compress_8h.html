@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/lib/toolbox/compress.h File Reference &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UniversalRemotes.html">Universal Remotes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/lib/toolbox/compress.h File Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/compress_8h.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="users-astrr-flipper-flipperzero-firmware-lib-toolbox-compress-h-file-reference">
+<h1>/Users/astrr/flipper/flipperzero-firmware/lib/toolbox/compress.h File Reference<a class="headerlink" href="#users-astrr-flipper-flipperzero-firmware-lib-toolbox-compress-h-file-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/lib/toolbox/compress.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Flipper Zero Firmware
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_13d21c8c6ca0e7a500ae25ea47aeacf2.html">toolbox</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">compress.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>LZSS based compression HAL API.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+</div>
+<p><a href="compress_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aa6d4390d1b2b419cb2110c0e06a548a1"><td class="memItemLeft" align="right" valign="top"><a id="aa6d4390d1b2b419cb2110c0e06a548a1" name="aa6d4390d1b2b419cb2110c0e06a548a1"></a>
+typedef struct <a class="el" href="struct_compress_icon.html">CompressIcon</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CompressIcon</b></td></tr>
+<tr class="memdesc:aa6d4390d1b2b419cb2110c0e06a548a1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_compress.html">Compress</a> <a class="el" href="struct_icon.html">Icon</a> control structure. <br /></td></tr>
+<tr class="separator:aa6d4390d1b2b419cb2110c0e06a548a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba48e94644e8711618aa46c41558fe0"><td class="memItemLeft" align="right" valign="top"><a id="a5ba48e94644e8711618aa46c41558fe0" name="a5ba48e94644e8711618aa46c41558fe0"></a>
+typedef struct <a class="el" href="struct_compress.html">Compress</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Compress</b></td></tr>
+<tr class="memdesc:a5ba48e94644e8711618aa46c41558fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_compress.html">Compress</a> control structure. <br /></td></tr>
+<tr class="separator:a5ba48e94644e8711618aa46c41558fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a9c1224ff0e8de58370c10011c3052bce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_compress_icon.html">CompressIcon</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#a9c1224ff0e8de58370c10011c3052bce">compress_icon_alloc</a> ()</td></tr>
+<tr class="memdesc:a9c1224ff0e8de58370c10011c3052bce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize icon compressor.  <a href="compress_8h.html#a9c1224ff0e8de58370c10011c3052bce">More...</a><br /></td></tr>
+<tr class="separator:a9c1224ff0e8de58370c10011c3052bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5b92fa02bc2b09e68037bd08cbb005"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#a3e5b92fa02bc2b09e68037bd08cbb005">compress_icon_free</a> (<a class="el" href="struct_compress_icon.html">CompressIcon</a> *instance)</td></tr>
+<tr class="memdesc:a3e5b92fa02bc2b09e68037bd08cbb005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free icon compressor.  <a href="compress_8h.html#a3e5b92fa02bc2b09e68037bd08cbb005">More...</a><br /></td></tr>
+<tr class="separator:a3e5b92fa02bc2b09e68037bd08cbb005"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd74546806beceb7e7b5670e2f04a11a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#abd74546806beceb7e7b5670e2f04a11a">compress_icon_decode</a> (<a class="el" href="struct_compress_icon.html">CompressIcon</a> *instance, const uint8_t *icon_data, uint8_t **decoded_buff)</td></tr>
+<tr class="memdesc:abd74546806beceb7e7b5670e2f04a11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decompress icon.  <a href="compress_8h.html#abd74546806beceb7e7b5670e2f04a11a">More...</a><br /></td></tr>
+<tr class="separator:abd74546806beceb7e7b5670e2f04a11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a994884fbe7a43a6f4d48808c55e9bdc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_compress.html">Compress</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#a994884fbe7a43a6f4d48808c55e9bdc1">compress_alloc</a> (uint16_t compress_buff_size)</td></tr>
+<tr class="memdesc:a994884fbe7a43a6f4d48808c55e9bdc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate encoder and decoder.  <a href="compress_8h.html#a994884fbe7a43a6f4d48808c55e9bdc1">More...</a><br /></td></tr>
+<tr class="separator:a994884fbe7a43a6f4d48808c55e9bdc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7aa06804c0a3ff473af5ab48a1f030a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#ac7aa06804c0a3ff473af5ab48a1f030a">compress_free</a> (<a class="el" href="struct_compress.html">Compress</a> *compress)</td></tr>
+<tr class="memdesc:ac7aa06804c0a3ff473af5ab48a1f030a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free encoder and decoder.  <a href="compress_8h.html#ac7aa06804c0a3ff473af5ab48a1f030a">More...</a><br /></td></tr>
+<tr class="separator:ac7aa06804c0a3ff473af5ab48a1f030a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba57490ce3ffdfc16bceae6efb4d46dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#aba57490ce3ffdfc16bceae6efb4d46dd">compress_encode</a> (<a class="el" href="struct_compress.html">Compress</a> *compress, uint8_t *data_in, size_t data_in_size, uint8_t *data_out, size_t data_out_size, size_t *data_res_size)</td></tr>
+<tr class="memdesc:aba57490ce3ffdfc16bceae6efb4d46dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encode data.  <a href="compress_8h.html#aba57490ce3ffdfc16bceae6efb4d46dd">More...</a><br /></td></tr>
+<tr class="separator:aba57490ce3ffdfc16bceae6efb4d46dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa666043eb43edb61e82eea292cc92738"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compress_8h.html#aa666043eb43edb61e82eea292cc92738">compress_decode</a> (<a class="el" href="struct_compress.html">Compress</a> *compress, uint8_t *data_in, size_t data_in_size, uint8_t *data_out, size_t data_out_size, size_t *data_res_size)</td></tr>
+<tr class="memdesc:aa666043eb43edb61e82eea292cc92738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decode data.  <a href="compress_8h.html#aa666043eb43edb61e82eea292cc92738">More...</a><br /></td></tr>
+<tr class="separator:aa666043eb43edb61e82eea292cc92738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >LZSS based compression HAL API. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a994884fbe7a43a6f4d48808c55e9bdc1" name="a994884fbe7a43a6f4d48808c55e9bdc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a994884fbe7a43a6f4d48808c55e9bdc1">&#9670;&nbsp;</a></span>compress_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_compress.html">Compress</a> * compress_alloc </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>compress_buff_size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocate encoder and decoder. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compress_buff_size</td><td>size of decoder and encoder buffer to allocate</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_compress.html">Compress</a> instance </dd></dl>
+
+</div>
+</div>
+<a id="aa666043eb43edb61e82eea292cc92738" name="aa666043eb43edb61e82eea292cc92738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa666043eb43edb61e82eea292cc92738">&#9670;&nbsp;</a></span>compress_decode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool compress_decode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_compress.html">Compress</a> *&#160;</td>
+          <td class="paramname"><em>compress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>data_in_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>data_out_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>data_res_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decode data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compress</td><td><a class="el" href="struct_compress.html">Compress</a> instance </td></tr>
+    <tr><td class="paramname">data_in</td><td>pointer to input data </td></tr>
+    <tr><td class="paramname">data_in_size</td><td>size of input data </td></tr>
+    <tr><td class="paramname">data_out</td><td>maximum size of output data </td></tr>
+    <tr><td class="paramname">data_res_size</td><td>pointer to result output data size</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success </dd></dl>
+
+</div>
+</div>
+<a id="aba57490ce3ffdfc16bceae6efb4d46dd" name="aba57490ce3ffdfc16bceae6efb4d46dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba57490ce3ffdfc16bceae6efb4d46dd">&#9670;&nbsp;</a></span>compress_encode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool compress_encode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_compress.html">Compress</a> *&#160;</td>
+          <td class="paramname"><em>compress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>data_in_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>data_out_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>data_res_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Encode data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compress</td><td><a class="el" href="struct_compress.html">Compress</a> instance </td></tr>
+    <tr><td class="paramname">data_in</td><td>pointer to input data </td></tr>
+    <tr><td class="paramname">data_in_size</td><td>size of input data </td></tr>
+    <tr><td class="paramname">data_out</td><td>maximum size of output data </td></tr>
+    <tr><td class="paramname">data_res_size</td><td>pointer to result output data size</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success </dd></dl>
+
+</div>
+</div>
+<a id="ac7aa06804c0a3ff473af5ab48a1f030a" name="ac7aa06804c0a3ff473af5ab48a1f030a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7aa06804c0a3ff473af5ab48a1f030a">&#9670;&nbsp;</a></span>compress_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compress_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_compress.html">Compress</a> *&#160;</td>
+          <td class="paramname"><em>compress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Free encoder and decoder. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compress</td><td><a class="el" href="struct_compress.html">Compress</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c1224ff0e8de58370c10011c3052bce" name="a9c1224ff0e8de58370c10011c3052bce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c1224ff0e8de58370c10011c3052bce">&#9670;&nbsp;</a></span>compress_icon_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_compress_icon.html">CompressIcon</a> * compress_icon_alloc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize icon compressor. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_compress.html">Compress</a> <a class="el" href="struct_icon.html">Icon</a> instance </dd></dl>
+
+</div>
+</div>
+<a id="abd74546806beceb7e7b5670e2f04a11a" name="abd74546806beceb7e7b5670e2f04a11a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd74546806beceb7e7b5670e2f04a11a">&#9670;&nbsp;</a></span>compress_icon_decode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compress_icon_decode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_compress_icon.html">CompressIcon</a> *&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>icon_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t **&#160;</td>
+          <td class="paramname"><em>decoded_buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decompress icon. </p>
+<dl class="section warning"><dt>Warning</dt><dd>decoded_buff pointer set by this function is valid till next `compress_icon_decode` or `compress_icon_free` call</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">instance</td><td>The <a class="el" href="struct_compress.html">Compress</a> <a class="el" href="struct_icon.html">Icon</a> instance </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">icon_data</td><td>pointer to icon data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">decoded_buff</td><td>pointer to decoded buffer pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3e5b92fa02bc2b09e68037bd08cbb005" name="a3e5b92fa02bc2b09e68037bd08cbb005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e5b92fa02bc2b09e68037bd08cbb005">&#9670;&nbsp;</a></span>compress_icon_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compress_icon_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_compress_icon.html">CompressIcon</a> *&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Free icon compressor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instance</td><td>The <a class="el" href="struct_compress.html">Compress</a> <a class="el" href="struct_icon.html">Icon</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="compress_8h.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/doxygen/html/compress_8h.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
