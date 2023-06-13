@@ -1,0 +1,14 @@
+.. meta::a1da80e6548bd44b1dd63b6bd0c967e0c959cd86ce62656d4148f6aad5ed63e4c99a94ba6f6d23d42f13e8daca8d8634cbfa48307ded91d24fae45f20a7da4d5
+
+:orphan:
+
+.. title:: Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/services/storage Directory Reference
+
+/Users/astrr/flipper/flipperzero-firmware/applications/services/storage Directory Reference
+===========================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: dir_2c2c2d9f45026418a062d83cf7150d50.html

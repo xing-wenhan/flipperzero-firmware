@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/f7/furi_hal/furi_hal_ibutton.h File Reference &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/OTA.html">Flipper Zero OTA update process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/f7/furi_hal/furi_hal_ibutton.h File Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/furi__hal__ibutton_8h.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="users-astrr-flipper-flipperzero-firmware-firmware-targets-f7-furi-hal-furi-hal-ibutton-h-file-reference">
+<h1>/Users/astrr/flipper/flipperzero-firmware/firmware/targets/f7/furi_hal/furi_hal_ibutton.h File Reference<a class="headerlink" href="#users-astrr-flipper-flipperzero-firmware-firmware-targets-f7-furi-hal-furi-hal-ibutton-h-file-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/f7/furi_hal/furi_hal_ibutton.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Flipper Zero Firmware
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_2d21308063d3b2f2dd74554ae427596f.html">targets</a></li><li class="navelem"><a class="el" href="dir_1f97ac513b55c3b4fca43ced46ea9f5b.html">f7</a></li><li class="navelem"><a class="el" href="dir_2c130f87baa50ae5c276f1c6ed697153.html">furi_hal</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">furi_hal_ibutton.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="structi_button.html">iButton</a> HAL API  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="furi__hal__ibutton_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ac887e427d904d8a000109c8cf6147fd7"><td class="memItemLeft" align="right" valign="top"><a id="ac887e427d904d8a000109c8cf6147fd7" name="ac887e427d904d8a000109c8cf6147fd7"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>FuriHalIbuttonEmulateCallback</b>) (void *context)</td></tr>
+<tr class="separator:ac887e427d904d8a000109c8cf6147fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a533d33aaa95f4bb7e972b5b4bd0f3e16"><td class="memItemLeft" align="right" valign="top"><a id="a533d33aaa95f4bb7e972b5b4bd0f3e16" name="a533d33aaa95f4bb7e972b5b4bd0f3e16"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>furi_hal_ibutton_init</b> ()</td></tr>
+<tr class="memdesc:a533d33aaa95f4bb7e972b5b4bd0f3e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize. <br /></td></tr>
+<tr class="separator:a533d33aaa95f4bb7e972b5b4bd0f3e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1355f490f79edf838a6f58d94e7abe99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__ibutton_8h.html#a1355f490f79edf838a6f58d94e7abe99">furi_hal_ibutton_emulate_start</a> (uint32_t period, FuriHalIbuttonEmulateCallback callback, void *context)</td></tr>
+<tr class="memdesc:a1355f490f79edf838a6f58d94e7abe99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start emulation timer.  <a href="furi__hal__ibutton_8h.html#a1355f490f79edf838a6f58d94e7abe99">More...</a><br /></td></tr>
+<tr class="separator:a1355f490f79edf838a6f58d94e7abe99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5699c6fdf8519b76b57316d4b9a60aa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__ibutton_8h.html#a5699c6fdf8519b76b57316d4b9a60aa2">furi_hal_ibutton_emulate_set_next</a> (uint32_t period)</td></tr>
+<tr class="memdesc:a5699c6fdf8519b76b57316d4b9a60aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update emulation timer period.  <a href="furi__hal__ibutton_8h.html#a5699c6fdf8519b76b57316d4b9a60aa2">More...</a><br /></td></tr>
+<tr class="separator:a5699c6fdf8519b76b57316d4b9a60aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adef3464f4b01af7c20794e89a19e849b"><td class="memItemLeft" align="right" valign="top"><a id="adef3464f4b01af7c20794e89a19e849b" name="adef3464f4b01af7c20794e89a19e849b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>furi_hal_ibutton_emulate_stop</b> ()</td></tr>
+<tr class="memdesc:adef3464f4b01af7c20794e89a19e849b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop emulation timer. <br /></td></tr>
+<tr class="separator:adef3464f4b01af7c20794e89a19e849b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09214edd0fa9b4cd5a60e91eeb3f1d5a"><td class="memItemLeft" align="right" valign="top"><a id="a09214edd0fa9b4cd5a60e91eeb3f1d5a" name="a09214edd0fa9b4cd5a60e91eeb3f1d5a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>furi_hal_ibutton_pin_configure</b> ()</td></tr>
+<tr class="memdesc:a09214edd0fa9b4cd5a60e91eeb3f1d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the pin to normal mode (open collector), and sets it to float. <br /></td></tr>
+<tr class="separator:a09214edd0fa9b4cd5a60e91eeb3f1d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8cfde228cec7301947ebf2205ede7eb"><td class="memItemLeft" align="right" valign="top"><a id="ae8cfde228cec7301947ebf2205ede7eb" name="ae8cfde228cec7301947ebf2205ede7eb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>furi_hal_ibutton_pin_reset</b> ()</td></tr>
+<tr class="memdesc:ae8cfde228cec7301947ebf2205ede7eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pin to analog mode, and sets it to float. <br /></td></tr>
+<tr class="separator:ae8cfde228cec7301947ebf2205ede7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a168289c8a71d746f6c19f0ef6ec3b76c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="furi__hal__ibutton_8h.html#a168289c8a71d746f6c19f0ef6ec3b76c">furi_hal_ibutton_pin_write</a> (const bool state)</td></tr>
+<tr class="memdesc:a168289c8a71d746f6c19f0ef6ec3b76c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structi_button.html">iButton</a> write pin  <a href="furi__hal__ibutton_8h.html#a168289c8a71d746f6c19f0ef6ec3b76c">More...</a><br /></td></tr>
+<tr class="separator:a168289c8a71d746f6c19f0ef6ec3b76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="structi_button.html">iButton</a> HAL API </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a5699c6fdf8519b76b57316d4b9a60aa2" name="a5699c6fdf8519b76b57316d4b9a60aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5699c6fdf8519b76b57316d4b9a60aa2">&#9670;&nbsp;</a></span>furi_hal_ibutton_emulate_set_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_ibutton_emulate_set_next </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>period</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update emulation timer period. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">period</td><td>new timer period </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1355f490f79edf838a6f58d94e7abe99" name="a1355f490f79edf838a6f58d94e7abe99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1355f490f79edf838a6f58d94e7abe99">&#9670;&nbsp;</a></span>furi_hal_ibutton_emulate_start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_ibutton_emulate_start </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>period</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FuriHalIbuttonEmulateCallback&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start emulation timer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">period</td><td>timer period </td></tr>
+    <tr><td class="paramname">callback</td><td>timer callback </td></tr>
+    <tr><td class="paramname">context</td><td>callback context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a168289c8a71d746f6c19f0ef6ec3b76c" name="a168289c8a71d746f6c19f0ef6ec3b76c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a168289c8a71d746f6c19f0ef6ec3b76c">&#9670;&nbsp;</a></span>furi_hal_ibutton_pin_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void furi_hal_ibutton_pin_write </td>
+          <td>(</td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="structi_button.html">iButton</a> write pin </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>true / false </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/docs-branches-test
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../../870-docs-autogen/doxygen/html/furi__hal__ibutton_8h.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="furi__hal__ibutton_8h.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

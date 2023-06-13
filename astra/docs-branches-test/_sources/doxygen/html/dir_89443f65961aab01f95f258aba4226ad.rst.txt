@@ -1,0 +1,14 @@
+.. meta::332426eee038d6da825ed41b4a8d9abfad95fb2dc6c4626df32da07a879497eb6f99227d8c62f5c299798056e3874d405813bf4b3b04a7eeffa5896691d5b456
+
+:orphan:
+
+.. title:: Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/external/nfc_magic/lib/magic Directory Reference
+
+/Users/astrr/flipper/flipperzero-firmware/applications/external/nfc\_magic/lib/magic Directory Reference
+========================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: dir_89443f65961aab01f95f258aba4226ad.html

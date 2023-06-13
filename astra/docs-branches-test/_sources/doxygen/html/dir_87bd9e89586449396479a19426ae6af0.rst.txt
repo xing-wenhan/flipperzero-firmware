@@ -1,0 +1,14 @@
+.. meta::4c59b0dd6964d491f961050662b2b2a56fc67be5caee3deeb3aafa71204a8c9e23a9be7b99d276b64c96e08c27384dc75c28fd9bb2542f5337c573441138a283
+
+:orphan:
+
+.. title:: Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/firmware/targets/f7/platform_specific Directory Reference
+
+/Users/astrr/flipper/flipperzero-firmware/firmware/targets/f7/platform\_specific Directory Reference
+====================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: dir_87bd9e89586449396479a19426ae6af0.html

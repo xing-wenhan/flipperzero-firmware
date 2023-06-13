@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Formats for Flipper’s SubGhz Subsystem &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Flipper Application Manifests (.fam)" href="../AppManifests.html" />
+    <link rel="prev" title="NFC Flipper File Formats" href="NfcFileFormats.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Flipper Zero File Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html">BadUSB File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html">iButton key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html">Infrared Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html">LF RFID key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html">NFC Flipper File Formats</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Formats for Flipper’s SubGhz Subsystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sub-file-format">.sub File Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#header-format">Header format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preset-information">Preset information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transceiver-configuration-data">Transceiver Configuration Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-data">File Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-files">Key Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw-files">RAW Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-examples">File examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-file-standard-preset">Key file, standard preset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-file-custom-preset">Key file, custom preset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw-file-standard-preset">RAW file, standard preset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw-file-custom-preset">RAW file, custom preset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subghz-configuration-files">SubGhz configuration files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subghz-keeloq-mfcodes-user-file">SubGhz keeloq_mfcodes_user file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#file-format">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#subghz-setting-user-file">SubGhz setting_user file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OTA.html">Flipper Zero OTA update process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flipper Zero File Formats</a></li>
+      <li class="breadcrumb-item active">File Formats for Flipper’s SubGhz Subsystem</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/file_formats/SubGhzFileFormats.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-formats-for-flipper-s-subghz-subsystem">
+<h1>File Formats for Flipper’s SubGhz Subsystem<a class="headerlink" href="#file-formats-for-flipper-s-subghz-subsystem" title="Permalink to this heading"></a></h1>
+<section id="sub-file-format">
+<h2>.sub File Format<a class="headerlink" href="#sub-file-format" title="Permalink to this heading"></a></h2>
+<p>Flipper uses <code class="docutils literal notranslate"><span class="pre">.sub</span></code> files to store SubGhz transmissions. These are text files in Flipper File Format. <code class="docutils literal notranslate"><span class="pre">.sub</span></code> files can contain either a SubGhz Key with a certain protocol or SubGhz RAW data.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">.sub</span></code> files consist of 3 parts:</p>
+<ul class="simple">
+<li><p><strong>header</strong>: contains file type, version, and frequency</p></li>
+<li><p><strong>preset information</strong>: preset type and, in case of a custom preset, transceiver configuration data</p></li>
+<li><p><strong>protocol and its data</strong>: contains protocol name and its specific data, such as key, bit length, etc., or RAW data</p></li>
+</ul>
+<p>Flipper’s SubGhz subsystem uses presets to configure the radio transceiver. Presets are used to configure modulation, bandwidth, filters, etc. There are several presets available in stock firmware, and there is a way to create custom presets. See <a class="reference internal" href="#adding-a-custom-preset"><span class="xref myst">SubGhz Presets</span></a> for more details.</p>
+</section>
+<section id="header-format">
+<h2>Header format<a class="headerlink" href="#header-format" title="Permalink to this heading"></a></h2>
+<p>Header is a mandatory part of <code class="docutils literal notranslate"><span class="pre">.sub</span></code> file. It contains file type, version, and frequency.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Filetype</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Filetype of subghz file format, must be <code class="docutils literal notranslate"><span class="pre">Flipper</span> <span class="pre">SubGhz</span> <span class="pre">Key</span> <span class="pre">File</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Version</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>Version of subghz file format, current version is 1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Frequency</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>Frequency in Hertz</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="preset-information">
+<h2>Preset information<a class="headerlink" href="#preset-information" title="Permalink to this heading"></a></h2>
+<p>Preset information is a mandatory part for <code class="docutils literal notranslate"><span class="pre">.sub</span></code> files. It contains preset type and, in case of custom preset, transceiver configuration data.</p>
+<p>When using one of the standard presets, only <code class="docutils literal notranslate"><span class="pre">Preset</span></code> field is required. When using a custom preset, <code class="docutils literal notranslate"><span class="pre">Custom_preset_module</span></code> and <code class="docutils literal notranslate"><span class="pre">Custom_preset_data</span></code> fields are required.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Preset</span></code></p></td>
+<td><p>Radio preset name (configures modulation, bandwidth, filters, etc.). When using a custom preset, must be <code class="docutils literal notranslate"><span class="pre">FuriHalSubGhzPresetCustom</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Custom_preset_module</span></code></p></td>
+<td><p>Transceiver identifier, <code class="docutils literal notranslate"><span class="pre">CC1101</span></code> for Flipper Zero</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Custom_preset_data</span></code></p></td>
+<td><p>Transceiver configuration data</p></td>
+</tr>
+</tbody>
+</table>
+<p>Built-in presets:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FuriHalSubGhzPresetOok270Async</span></code> — On/Off Keying, 270kHz bandwidth, async(IO throw GP0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FuriHalSubGhzPresetOok650Async</span></code> — On/Off Keying, 650kHz bandwidth, async(IO throw GP0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FuriHalSubGhzPreset2FSKDev238Async</span></code> — 2 Frequency Shift Keying, deviation 2kHz, 270kHz bandwidth, async(IO throw GP0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FuriHalSubGhzPreset2FSKDev476Async</span></code> — 2 Frequency Shift Keying, deviation 47kHz, 270kHz bandwidth, async(IO throw GP0)</p></li>
+</ul>
+<section id="transceiver-configuration-data">
+<h3>Transceiver Configuration Data<a class="headerlink" href="#transceiver-configuration-data" title="Permalink to this heading"></a></h3>
+<p>Transceiver configuration data is a string of bytes, encoded in hex format, separated by spaces. For CC1101 data structure is: <code class="docutils literal notranslate"><span class="pre">XX</span> <span class="pre">YY</span> <span class="pre">XX</span> <span class="pre">YY</span> <span class="pre">..</span> <span class="pre">00</span> <span class="pre">00</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span></code>, where:</p>
+<ul class="simple">
+<li><p>XX holds register address,</p></li>
+<li><p>YY contains register value,</p></li>
+<li><p>00 00: marks register block end,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span> <span class="pre">ZZ</span></code>: 8 byte PA table (Power amplifier ramp table).</p></li>
+</ul>
+<p>You can find more details in the <a class="reference external" href="https://www.ti.com/lit/ds/symlink/cc1101.pdf">CC1101 datasheet</a> and <code class="docutils literal notranslate"><span class="pre">furi_hal_subghz</span></code> code.</p>
+</section>
+</section>
+<section id="file-data">
+<h2>File Data<a class="headerlink" href="#file-data" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.sub</span></code> file data section contains either key data — protocol name and its specific data, bit length, etc., or RAW data — an array of signal timings, recorded without any protocol-specific processing.</p>
+<section id="key-files">
+<h3>Key Files<a class="headerlink" href="#key-files" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.sub</span></code> files with key data files contain protocol name and its specific data, such as key value, bit length, etc.
+Check out the protocol registry for the full list of supported protocol names.</p>
+<p>Example of a key data block in Princeton format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">Protocol</span><span class="p">:</span> <span class="n">Princeton</span>
+<span class="n">Bit</span><span class="p">:</span> <span class="mi">24</span>
+<span class="n">Key</span><span class="p">:</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">95</span> <span class="n">D5</span> <span class="n">D4</span>
+<span class="n">TE</span><span class="p">:</span> <span class="mi">400</span>
+</pre></div>
+</div>
+<p>Protocol-specific fields in this example:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Bit</span></code></p></td>
+<td><p>Princeton payload length, in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Key</span></code></p></td>
+<td><p>Princeton payload data</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TE</span></code></p></td>
+<td><p>Princeton quantization interval</p></td>
+</tr>
+</tbody>
+</table>
+<p>This file may contain additional fields, more details on available fields can be found in subghz protocols library.</p>
+</section>
+<section id="raw-files">
+<h3>RAW Files<a class="headerlink" href="#raw-files" title="Permalink to this heading"></a></h3>
+<p>RAW <code class="docutils literal notranslate"><span class="pre">.sub</span></code> files contain raw signal data that is not processed through protocol-specific decoding. These files are useful for testing or sending data not supported by any known protocol.</p>
+<p>For RAW files, 2 fields are required:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Protocol</span></code>, must be <code class="docutils literal notranslate"><span class="pre">RAW</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RAW_Data</span></code>, contains an array of timings, specified in microseconds Values must be non-zero, start with a positive number, and interleaved (change sign with each value). Up to 512 values per line. Can be specified multiple times to store multiple lines of data.</p></li>
+</ul>
+<p>Example of RAW data:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Protocol: RAW
+RAW_Data: 29262 361 -68 2635 -66 24113 -66 11 ...
+</pre></div>
+</div>
+<p>Long payload not fitting into internal memory buffer and consisting of short duration timings (&lt; 10us) may not be read fast enough from the SD card. That might cause the signal transmission to stop before reaching the end of the payload. Ensure that your SD Card has good performance before transmitting long or complex RAW payloads.</p>
+</section>
+</section>
+<section id="file-examples">
+<h2>File examples<a class="headerlink" href="#file-examples" title="Permalink to this heading"></a></h2>
+<section id="key-file-standard-preset">
+<h3>Key file, standard preset<a class="headerlink" href="#key-file-standard-preset" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Filetype: Flipper SubGhz Key File
+Version: 1
+Frequency: 433920000
+Preset: FuriHalSubGhzPresetOok650Async
+Protocol: Princeton
+Bit: 24
+Key: 00 00 00 00 00 95 D5 D4
+TE: 400
+</pre></div>
+</div>
+</section>
+<section id="key-file-custom-preset">
+<h3>Key file, custom preset<a class="headerlink" href="#key-file-custom-preset" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Filetype: Flipper SubGhz Key File
+Version: 1
+Frequency: 433920000
+Preset: FuriHalSubGhzPresetCustom
+Custom_preset_module: CC1101
+Custom_preset_data: 02 0D 03 07 08 32 0B 06 14 00 13 00 12 30 11 32 10 17 18 18 19 18 1D 91 1C 00 1B 07 20 FB 22 11 21 B6 00 00 00 C0 00 00 00 00 00 00
+Protocol: Princeton
+Bit: 24
+Key: 00 00 00 00 00 95 D5 D4
+TE: 400
+</pre></div>
+</div>
+</section>
+<section id="raw-file-standard-preset">
+<h3>RAW file, standard preset<a class="headerlink" href="#raw-file-standard-preset" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Filetype: Flipper SubGhz RAW File
+Version: 1
+Frequency: 433920000
+Preset: FuriHalSubGhzPresetOok650Async
+Protocol: RAW
+RAW_Data: 29262 361 -68 2635 -66 24113 -66 11 ...
+RAW_Data: -424 205 -412 159 -412 381 -240 181 ...
+RAW_Data: -1448 361 -17056 131 -134 233 -1462 131 -166 953 -100 ...
+</pre></div>
+</div>
+</section>
+<section id="raw-file-custom-preset">
+<h3>RAW file, custom preset<a class="headerlink" href="#raw-file-custom-preset" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Filetype: Flipper SubGhz RAW File
+Version: 1
+Frequency: 433920000
+Preset: FuriHalSubGhzPresetCustom
+Custom_preset_module: CC1101
+Сustom_preset_data: 02 0D 03 07 08 32 0B 06 14 00 13 00 12 30 11 32 10 17 18 18 19 18 1D 91 1C 00 1B 07 20 FB 22 11 21 B6 00 00 00 C0 00 00 00 00 00 00
+Protocol: RAW
+RAW_Data: 29262 361 -68 2635 -66 24113 -66 11 ...
+RAW_Data: -424 205 -412 159 -412 381 -240 181 ...
+RAW_Data: -1448 361 -17056 131 -134 233 -1462 131 -166 953 -100 ...
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="subghz-configuration-files">
+<h1>SubGhz configuration files<a class="headerlink" href="#subghz-configuration-files" title="Permalink to this heading"></a></h1>
+<p>SubGhz application provides support for adding extra radio presets and additional keys for decoding transmissions in certain protocols.</p>
+<section id="subghz-keeloq-mfcodes-user-file">
+<h2>SubGhz keeloq_mfcodes_user file<a class="headerlink" href="#subghz-keeloq-mfcodes-user-file" title="Permalink to this heading"></a></h2>
+<p>This file contains additional manufacturer keys for Keeloq protocol. It is used to decode Keeloq transmissions.
+This file is loaded at subghz application start and is located at path <code class="docutils literal notranslate"><span class="pre">/ext/subghz/assets/keeloq_mfcodes_user</span></code>.</p>
+<section id="file-format">
+<h3>File format<a class="headerlink" href="#file-format" title="Permalink to this heading"></a></h3>
+<p>File contains a header and a list of manufacturer keys.</p>
+<p>File header format:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Filetype</span></code></p></td>
+<td><p>string</p></td>
+<td><p>SubGhz Keystore file format, always <code class="docutils literal notranslate"><span class="pre">Flipper</span> <span class="pre">SubGhz</span> <span class="pre">Keystore</span> <span class="pre">File</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Version</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>File format version, 0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Encryption</span></code></p></td>
+<td><p>uint</p></td>
+<td><p>File encryption: for user-provided file, set to 0 (disabled)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Following the header, file contains a list of user-provided manufacture keys, one key per line.
+For each key, a name and encryption method must be specified, according to comment in file header. More information can be found in keeloq decoder source code.</p>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># to use manual settings and prevent them from being deleted on upgrade, rename *_user.example files to *_user
+# for adding manufacture keys
+# AABBCCDDEEFFAABB:X:NAME
+# AABBCCDDEEFFAABB - man 64 bit
+# X - encryption method:
+# - 0 - iterates over both previous and man in direct and reverse byte sequence
+# - 1 - Simple Learning
+# - 2 - Normal_Learning
+# - 3 - Secure_Learning
+# - 4 - Magic_xor_type1 Learning
+#
+# NAME - name (string without spaces) max 64 characters long
+Filetype: Flipper SubGhz Keystore File
+Version: 0
+Encryption: 0
+AABBCCDDEEFFAABB:1:Test1
+AABBCCDDEEFFAABB:1:Test2
+</pre></div>
+</div>
+</section>
+</section>
+<section id="subghz-setting-user-file">
+<h2>SubGhz setting_user file<a class="headerlink" href="#subghz-setting-user-file" title="Permalink to this heading"></a></h2>
+<p>This file contains additional radio presets and frequencies for SubGhz application. It is used to add new presets and frequencies for existing presets. This file is being loaded on subghz application start and is located at path <code class="docutils literal notranslate"><span class="pre">/ext/subghz/assets/setting_user</span></code>.</p>
+<section id="id1">
+<h3>File format<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>File contains a header, basic options, and optional lists of presets and frequencies.</p>
+<p>Header must contain the following fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Filetype</span></code>: SubGhz setting file format, must be <code class="docutils literal notranslate"><span class="pre">Flipper</span> <span class="pre">SubGhz</span> <span class="pre">Setting</span> <span class="pre">File</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Version</span></code>: file format version, current is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+<section id="basic-settings">
+<h4>Basic settings<a class="headerlink" href="#basic-settings" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Add_standard_frequencies</span></code>: bool, flag indicating whether to load standard frequencies shipped with firmware. If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, only frequencies specified in this file will be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Default_frequency</span></code>: uint, default frequency used in SubGhz application.</p></li>
+</ul>
+</section>
+<section id="adding-more-frequencies">
+<h4>Adding more frequencies<a class="headerlink" href="#adding-more-frequencies" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Frequency</span></code>: uint — additional frequency for the subghz application frequency list. Used in Read and Read RAW. You can specify multiple frequencies, one per line.</p></li>
+</ul>
+</section>
+<section id="adding-more-hopper-frequencies">
+<h4>Adding more hopper frequencies<a class="headerlink" href="#adding-more-hopper-frequencies" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Hopper_frequency</span></code>: uint — additional frequency for subghz application frequency hopping. Used in Frequency Analyzer. You can specify multiple frequencies, one per line.</p></li>
+</ul>
+<p>Repeating the same frequency will cause Flipper to listen to this frequency more often.</p>
+</section>
+<section id="adding-a-custom-preset">
+<h4>Adding a Custom Preset<a class="headerlink" href="#adding-a-custom-preset" title="Permalink to this heading"></a></h4>
+<p>You can have as many presets as you want. Presets are embedded into <code class="docutils literal notranslate"><span class="pre">.sub</span></code> files, so another Flipper can load them directly from that file.
+Each preset is defined by the following fields:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Custom_preset_name</span></code></p></td>
+<td><p>string, preset name that will be shown in SubGHz application</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Custom_preset_module</span></code></p></td>
+<td><p>string, transceiver identifier. Set to <code class="docutils literal notranslate"><span class="pre">CC1101</span></code> for Flipper Zero</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Custom_preset_data</span></code></p></td>
+<td><p>transceiver configuration data. See <a class="reference internal" href="#transceiver-configuration-data"><span class="xref myst">Transceiver Configuration Data</span></a> for details.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># to use manual settings and prevent them from being deleted on upgrade, rename *_user.example files to *_user</span>
+<span class="n">Filetype</span><span class="p">:</span> <span class="n">Flipper</span> <span class="n">SubGhz</span> <span class="n">Setting</span> <span class="n">File</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="c1"># Add Standard frequencies for your region</span>
+<span class="n">Add_standard_frequencies</span><span class="p">:</span> <span class="n">true</span>
+
+<span class="c1"># Default Frequency: used as default for &quot;Read&quot; and &quot;Read Raw&quot;</span>
+<span class="n">Default_frequency</span><span class="p">:</span> <span class="mi">433920000</span>
+
+<span class="c1"># Frequencies used for &quot;Read&quot;, &quot;Read Raw&quot; and &quot;Frequency Analyzer&quot;</span>
+<span class="n">Frequency</span><span class="p">:</span> <span class="mi">300000000</span>
+<span class="n">Frequency</span><span class="p">:</span> <span class="mi">310000000</span>
+<span class="n">Frequency</span><span class="p">:</span> <span class="mi">320000000</span>
+
+<span class="c1"># Frequencies used for hopping mode (keep this list small or Flipper will miss the signal)</span>
+<span class="n">Hopper_frequency</span><span class="p">:</span> <span class="mi">300000000</span>
+<span class="n">Hopper_frequency</span><span class="p">:</span> <span class="mi">310000000</span>
+<span class="n">Hopper_frequency</span><span class="p">:</span> <span class="mi">310000000</span>
+
+<span class="c1"># Custom preset</span>
+<span class="c1"># format for CC1101 &quot;Custom_preset_data:&quot; XX YY XX YY .. 00 00 ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ, where: XX-register, YY - register data, 00 00 - end load register, ZZ - 8 byte Pa table register</span>
+
+<span class="c1">#Custom_preset_name: AM_1</span>
+<span class="n">Custom_preset_module</span><span class="p">:</span> <span class="n">CC1101</span>
+<span class="n">Custom_preset_data</span><span class="p">:</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">D</span> <span class="mi">03</span> <span class="mi">07</span> <span class="mi">08</span> <span class="mi">32</span> <span class="mi">0</span><span class="n">B</span> <span class="mi">06</span> <span class="mi">14</span> <span class="mi">00</span> <span class="mi">13</span> <span class="mi">00</span> <span class="mi">12</span> <span class="mi">30</span> <span class="mi">11</span> <span class="mi">32</span> <span class="mi">10</span> <span class="mi">17</span> <span class="mi">18</span> <span class="mi">18</span> <span class="mi">19</span> <span class="mi">18</span> <span class="mi">1</span><span class="n">D</span> <span class="mi">91</span> <span class="mi">1</span><span class="n">C</span> <span class="mi">00</span> <span class="mi">1</span><span class="n">B</span> <span class="mi">07</span> <span class="mi">20</span> <span class="n">FB</span> <span class="mi">22</span> <span class="mi">11</span> <span class="mi">21</span> <span class="n">B6</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">C0</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>
+
+<span class="c1">#Custom_preset_name: AM_2</span>
+<span class="c1">#Custom_preset_module: CC1101</span>
+<span class="c1">#Custom_preset_data: 02 0D 03 07 08 32 0B 06 14 00 13 00 12 30 11 32 10 17 18 18 19 18 1D 91 1C 00 1B 07 20 FB 22 11 21 B6 00 00 00 C0 00 00 00 00 00 00</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="NfcFileFormats.html" class="btn btn-neutral float-left" title="NFC Flipper File Formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AppManifests.html" class="btn btn-neutral float-right" title="Flipper Application Manifests (.fam)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/docs-branches-test
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../../870-docs-autogen/index.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="SubGhzFileFormats.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
