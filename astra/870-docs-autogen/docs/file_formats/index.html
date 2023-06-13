@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero File Formats &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BadUSB File Format" href="BadUsbScriptFormat.html" />
+    <link rel="prev" title="Globals" href="../../doxygen/html/globals_defs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Flipper Zero File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html">BadUSB File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html">iButton key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html">Infrared Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html">LF RFID key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html">NFC Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html">File Formats for Flipper’s SubGhz Subsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#subghz-configuration-files">SubGhz configuration files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UniversalRemotes.html">Universal Remotes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero File Formats</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/file_formats/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flipper-zero-file-formats">
+<h1>Flipper Zero File Formats<a class="headerlink" href="#flipper-zero-file-formats" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BadUsbScriptFormat.html">BadUSB File Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html#command-syntax">Command syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html#script-file-format">Script file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html#command-set">Command set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html#key-hold-and-release">Key hold and release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html#wait-for-button-press">Wait for button press</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html#string-delay">String delay</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="iButtonFileFormat.html">iButton key file format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html#version-history">Version history</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="InfraredFileFormats.html">Infrared Flipper File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html#infrared-remote-file-format">Infrared Remote File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html#infrared-library-file-format">Infrared Library File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html#infrared-test-file-format">Infrared Test File Format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="LfRfidFileFormat.html">LF RFID key file format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html#description">Description</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="NfcFileFormats.html">NFC Flipper File Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html#nfc-a-uid-header">NFC-A (UID) + Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html#mifare-ultralight-ntag">Mifare Ultralight/NTAG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html#mifare-classic">Mifare Classic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html#mifare-desfire">Mifare DESFire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html#mifare-classic-dictionary">Mifare Classic Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html#emv-resources">EMV resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SubGhzFileFormats.html">File Formats for Flipper’s SubGhz Subsystem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#sub-file-format">.sub File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#header-format">Header format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#preset-information">Preset information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#file-data">File Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#file-examples">File examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SubGhzFileFormats.html#subghz-configuration-files">SubGhz configuration files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#subghz-keeloq-mfcodes-user-file">SubGhz keeloq_mfcodes_user file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#subghz-setting-user-file">SubGhz setting_user file</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../doxygen/html/globals_defs.html" class="btn btn-neutral float-left" title="Globals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="BadUsbScriptFormat.html" class="btn btn-neutral float-right" title="BadUSB File Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="index.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/docs/file_formats/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/services/gui/modules/submenu.h File Reference &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/OTA.html">Flipper Zero OTA update process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/services/gui/modules/submenu.h File Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/doxygen/html/submenu_8h.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="users-astrr-flipper-flipperzero-firmware-applications-services-gui-modules-submenu-h-file-reference">
+<h1>/Users/astrr/flipper/flipperzero-firmware/applications/services/gui/modules/submenu.h File Reference<a class="headerlink" href="#users-astrr-flipper-flipperzero-firmware-applications-services-gui-modules-submenu-h-file-reference" title="Permalink to this heading"></a></h1>
+<div class="doxygen-content docutils container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/services/gui/modules/submenu.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Flipper Zero Firmware
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a6e4fee11f07c3b70486e88fe92cbbdc.html">applications</a></li><li class="navelem"><a class="el" href="dir_1581ab0e1b6f5f52cf9e9cea60a8e5e8.html">services</a></li><li class="navelem"><a class="el" href="dir_7aa9847637b0c465bfb6fdb3cbf0b24a.html">gui</a></li><li class="navelem"><a class="el" href="dir_d1431f705967dc3195bd6b9148f35d78.html">modules</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">submenu.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>GUI: SubMenu view module API.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="view_8h_source.html">gui/view.h</a>&gt;</code><br />
+</div>
+<p><a href="submenu_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aaac6706063068c7f7c23a908c3de36bc"><td class="memItemLeft" align="right" valign="top"><a id="aaac6706063068c7f7c23a908c3de36bc" name="aaac6706063068c7f7c23a908c3de36bc"></a>
+typedef struct <a class="el" href="struct_submenu.html">Submenu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Submenu</b></td></tr>
+<tr class="memdesc:aaac6706063068c7f7c23a908c3de36bc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_submenu.html">Submenu</a> anonymous structure. <br /></td></tr>
+<tr class="separator:aaac6706063068c7f7c23a908c3de36bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafaa0819642fa6b71797b0325e6129e5"><td class="memItemLeft" align="right" valign="top"><a id="aafaa0819642fa6b71797b0325e6129e5" name="aafaa0819642fa6b71797b0325e6129e5"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>SubmenuItemCallback</b>) (void *context, uint32_t index)</td></tr>
+<tr class="separator:aafaa0819642fa6b71797b0325e6129e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a22a5906bf09cd606505b74936cf57604"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#a22a5906bf09cd606505b74936cf57604">submenu_alloc</a> ()</td></tr>
+<tr class="memdesc:a22a5906bf09cd606505b74936cf57604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and initialize submenu.  <a href="submenu_8h.html#a22a5906bf09cd606505b74936cf57604">More...</a><br /></td></tr>
+<tr class="separator:a22a5906bf09cd606505b74936cf57604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5f3e6980a5d8c67ae0d2e2ca67ab8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#a3c5f3e6980a5d8c67ae0d2e2ca67ab8c">submenu_free</a> (<a class="el" href="struct_submenu.html">Submenu</a> *submenu)</td></tr>
+<tr class="memdesc:a3c5f3e6980a5d8c67ae0d2e2ca67ab8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize and free submenu.  <a href="submenu_8h.html#a3c5f3e6980a5d8c67ae0d2e2ca67ab8c">More...</a><br /></td></tr>
+<tr class="separator:a3c5f3e6980a5d8c67ae0d2e2ca67ab8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785f6989de3886a4302171c0f67da153"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_view.html">View</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#a785f6989de3886a4302171c0f67da153">submenu_get_view</a> (<a class="el" href="struct_submenu.html">Submenu</a> *submenu)</td></tr>
+<tr class="memdesc:a785f6989de3886a4302171c0f67da153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get submenu view.  <a href="submenu_8h.html#a785f6989de3886a4302171c0f67da153">More...</a><br /></td></tr>
+<tr class="separator:a785f6989de3886a4302171c0f67da153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabdfbc59886f191238d2a4da77168398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#aabdfbc59886f191238d2a4da77168398">submenu_add_item</a> (<a class="el" href="struct_submenu.html">Submenu</a> *submenu, const char *label, uint32_t index, SubmenuItemCallback callback, void *callback_context)</td></tr>
+<tr class="memdesc:aabdfbc59886f191238d2a4da77168398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add item to submenu.  <a href="submenu_8h.html#aabdfbc59886f191238d2a4da77168398">More...</a><br /></td></tr>
+<tr class="separator:aabdfbc59886f191238d2a4da77168398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87226ce55f6156516b382e3f04053a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#aa87226ce55f6156516b382e3f04053a4">submenu_reset</a> (<a class="el" href="struct_submenu.html">Submenu</a> *submenu)</td></tr>
+<tr class="memdesc:aa87226ce55f6156516b382e3f04053a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all items from submenu.  <a href="submenu_8h.html#aa87226ce55f6156516b382e3f04053a4">More...</a><br /></td></tr>
+<tr class="separator:aa87226ce55f6156516b382e3f04053a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedad41e541fab930e470e33f190202ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#aedad41e541fab930e470e33f190202ab">submenu_set_selected_item</a> (<a class="el" href="struct_submenu.html">Submenu</a> *submenu, uint32_t index)</td></tr>
+<tr class="memdesc:aedad41e541fab930e470e33f190202ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set submenu item selector.  <a href="submenu_8h.html#aedad41e541fab930e470e33f190202ab">More...</a><br /></td></tr>
+<tr class="separator:aedad41e541fab930e470e33f190202ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fe284fbfa2bed3d3042503ce5a46047"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="submenu_8h.html#a5fe284fbfa2bed3d3042503ce5a46047">submenu_set_header</a> (<a class="el" href="struct_submenu.html">Submenu</a> *submenu, const char *header)</td></tr>
+<tr class="memdesc:a5fe284fbfa2bed3d3042503ce5a46047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set optional header for submenu.  <a href="submenu_8h.html#a5fe284fbfa2bed3d3042503ce5a46047">More...</a><br /></td></tr>
+<tr class="separator:a5fe284fbfa2bed3d3042503ce5a46047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >GUI: SubMenu view module API. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aabdfbc59886f191238d2a4da77168398" name="aabdfbc59886f191238d2a4da77168398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabdfbc59886f191238d2a4da77168398">&#9670;&nbsp;</a></span>submenu_add_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void submenu_add_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td>
+          <td class="paramname"><em>submenu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SubmenuItemCallback&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>callback_context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add item to submenu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submenu</td><td><a class="el" href="struct_submenu.html">Submenu</a> instance </td></tr>
+    <tr><td class="paramname">label</td><td>menu item label </td></tr>
+    <tr><td class="paramname">index</td><td>menu item index, used for callback, may be the same with other items </td></tr>
+    <tr><td class="paramname">callback</td><td>menu item callback </td></tr>
+    <tr><td class="paramname">callback_context</td><td>menu item callback context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22a5906bf09cd606505b74936cf57604" name="a22a5906bf09cd606505b74936cf57604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22a5906bf09cd606505b74936cf57604">&#9670;&nbsp;</a></span>submenu_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_submenu.html">Submenu</a> * submenu_alloc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocate and initialize submenu. </p>
+<p >This submenu is used to select one option</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_submenu.html">Submenu</a> instance </dd></dl>
+
+</div>
+</div>
+<a id="a3c5f3e6980a5d8c67ae0d2e2ca67ab8c" name="a3c5f3e6980a5d8c67ae0d2e2ca67ab8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c5f3e6980a5d8c67ae0d2e2ca67ab8c">&#9670;&nbsp;</a></span>submenu_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void submenu_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td>
+          <td class="paramname"><em>submenu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deinitialize and free submenu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submenu</td><td><a class="el" href="struct_submenu.html">Submenu</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a785f6989de3886a4302171c0f67da153" name="a785f6989de3886a4302171c0f67da153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a785f6989de3886a4302171c0f67da153">&#9670;&nbsp;</a></span>submenu_get_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_view.html">View</a> * submenu_get_view </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td>
+          <td class="paramname"><em>submenu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get submenu view. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submenu</td><td><a class="el" href="struct_submenu.html">Submenu</a> instance</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_view.html">View</a> instance that can be used for embedding </dd></dl>
+
+</div>
+</div>
+<a id="aa87226ce55f6156516b382e3f04053a4" name="aa87226ce55f6156516b382e3f04053a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa87226ce55f6156516b382e3f04053a4">&#9670;&nbsp;</a></span>submenu_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void submenu_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td>
+          <td class="paramname"><em>submenu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove all items from submenu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submenu</td><td><a class="el" href="struct_submenu.html">Submenu</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5fe284fbfa2bed3d3042503ce5a46047" name="a5fe284fbfa2bed3d3042503ce5a46047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fe284fbfa2bed3d3042503ce5a46047">&#9670;&nbsp;</a></span>submenu_set_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void submenu_set_header </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td>
+          <td class="paramname"><em>submenu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>header</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set optional header for submenu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submenu</td><td><a class="el" href="struct_submenu.html">Submenu</a> instance </td></tr>
+    <tr><td class="paramname">header</td><td>header to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aedad41e541fab930e470e33f190202ab" name="aedad41e541fab930e470e33f190202ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedad41e541fab930e470e33f190202ab">&#9670;&nbsp;</a></span>submenu_set_selected_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void submenu_set_selected_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_submenu.html">Submenu</a> *&#160;</td>
+          <td class="paramname"><em>submenu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set submenu item selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submenu</td><td><a class="el" href="struct_submenu.html">Submenu</a> instance </td></tr>
+    <tr><td class="paramname">index</td><td>The index </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/docs-branches-test
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../../870-docs-autogen/doxygen/html/submenu_8h.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="submenu_8h.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.. meta::5c2bf54693bcd83b08a678306d84f7297caaa78d3e34c02fd217e32f89f7462135087e234fce21fc65e98fbb50e67f15831dc64f7ec09bc5f873c3b0f50380b3
+
+:orphan:
+
+.. title:: Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/external/spi_mem_manager Directory Reference
+
+/Users/astrr/flipper/flipperzero-firmware/applications/external/spi\_mem\_manager Directory Reference
+=====================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: dir_12d68c084dfa2444a054999119207622.html

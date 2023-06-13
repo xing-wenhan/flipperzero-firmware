@@ -1,0 +1,14 @@
+.. meta::845254949a0adb99f38ed6e8a81104c19dba4f7265879cbb52f462bc44873794ec8df9f86028f9ec37d0c6bfc212cd3cf2430ffaced8bb025f8c08d2513ffd38
+
+:orphan:
+
+.. title:: Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/debug Directory Reference
+
+/Users/astrr/flipper/flipperzero-firmware/applications/debug Directory Reference
+================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: dir_a153fa79c3247cb57c44e3de69605b32.html

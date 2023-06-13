@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal Remotes &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Unit tests" href="UnitTests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Universal Remotes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#televisions">Televisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#audio-players">Audio players</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#projectors">Projectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#air-conditioners">Air conditioners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#final-steps">Final steps</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Universal Remotes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/UniversalRemotes.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="universal-remotes">
+<h1>Universal Remotes<a class="headerlink" href="#universal-remotes" title="Permalink to this heading"></a></h1>
+<section id="televisions">
+<h2>Televisions<a class="headerlink" href="#televisions" title="Permalink to this heading"></a></h2>
+<p>Adding your TV set to the universal remote is quite straightforward. Up to 6 signals can be recorded: <code class="docutils literal notranslate"><span class="pre">Power</span></code>, <code class="docutils literal notranslate"><span class="pre">Mute</span></code>, <code class="docutils literal notranslate"><span class="pre">Vol_up</span></code>, <code class="docutils literal notranslate"><span class="pre">Vol_dn</span></code>, <code class="docutils literal notranslate"><span class="pre">Ch_next</span></code>, and <code class="docutils literal notranslate"><span class="pre">Ch_prev</span></code>. Any of them can be omitted if not supported by your TV.</p>
+<p>Each signal is recorded using the following algorithm:</p>
+<ol class="arabic simple">
+<li><p>Get the remote and point it to Flipper’s IR receiver.</p></li>
+<li><p>Start learning a new remote if it’s the first button or press <code class="docutils literal notranslate"><span class="pre">+</span></code> to add a new button otherwise.</p></li>
+<li><p>Press a remote button and save it under a corresponding name.</p></li>
+<li><p>Repeat steps 2-3 until all required signals are saved.</p></li>
+</ol>
+<p>The signal names are self-explanatory. Remember to make sure that every recorded signal does what it’s supposed to.</p>
+<p>If everything checks out, append these signals <strong>to the end</strong> of the <a class="reference internal" href="#/assets/resources/infrared/assets/tv.ir"><span class="xref myst">TV universal remote file</span></a>.</p>
+</section>
+<section id="audio-players">
+<h2>Audio players<a class="headerlink" href="#audio-players" title="Permalink to this heading"></a></h2>
+<p>Adding your audio player to the universal remote is done in the same manner as described above. Up to 8 signals can be recorded: <code class="docutils literal notranslate"><span class="pre">Power</span></code>, <code class="docutils literal notranslate"><span class="pre">Play</span></code>, <code class="docutils literal notranslate"><span class="pre">Pause</span></code>, <code class="docutils literal notranslate"><span class="pre">Vol_up</span></code>, <code class="docutils literal notranslate"><span class="pre">Vol_dn</span></code>, <code class="docutils literal notranslate"><span class="pre">Next</span></code>, <code class="docutils literal notranslate"><span class="pre">Prev</span></code>, and <code class="docutils literal notranslate"><span class="pre">Mute</span></code>. Any of them can be omitted if not supported by the player.</p>
+<p>The signal names are self-explanatory.
+On many remotes, the <code class="docutils literal notranslate"><span class="pre">Play</span></code> button doubles as <code class="docutils literal notranslate"><span class="pre">Pause</span></code>. In this case, record it as <code class="docutils literal notranslate"><span class="pre">Play</span></code> omitting the <code class="docutils literal notranslate"><span class="pre">Pause</span></code>.
+Make sure that every signal does what it’s supposed to.</p>
+<p>If everything checks out, append these signals <strong>to the end</strong> of the <a class="reference internal" href="#/assets/resources/infrared/assets/audio.ir"><span class="xref myst">audio player universal remote file</span></a>.</p>
+</section>
+<section id="projectors">
+<h2>Projectors<a class="headerlink" href="#projectors" title="Permalink to this heading"></a></h2>
+<p>Adding your projector to the universal remote is really simple. Up to 4 signals can be recorded: <code class="docutils literal notranslate"><span class="pre">Power</span></code>, <code class="docutils literal notranslate"><span class="pre">Mute</span></code>, <code class="docutils literal notranslate"><span class="pre">Vol_up</span></code>, <code class="docutils literal notranslate"><span class="pre">Vol_dn</span></code>. Any of them can be omitted if not supported by your projector.
+To save time, please make sure every recording has been named accordingly.
+In case of omitting, on most projectors with the 4 following buttons, you should not have a problem.</p>
+</section>
+<section id="air-conditioners">
+<h2>Air conditioners<a class="headerlink" href="#air-conditioners" title="Permalink to this heading"></a></h2>
+<p>Air conditioners differ from most other infrared-controlled devices because their state is tracked by the remote.
+The majority of A/C remotes have a small display that shows the current mode, temperature, and other settings.
+When the user presses a button, a whole set of parameters is transmitted to the device, which must be recorded and used as a whole.</p>
+<p>In order to add a particular air conditioner to the universal remote, 6 signals must be recorded: <code class="docutils literal notranslate"><span class="pre">Off</span></code>, <code class="docutils literal notranslate"><span class="pre">Dh</span></code>, <code class="docutils literal notranslate"><span class="pre">Cool_hi</span></code>, <code class="docutils literal notranslate"><span class="pre">Cool_lo</span></code>, <code class="docutils literal notranslate"><span class="pre">Heat_hi</span></code>, and <code class="docutils literal notranslate"><span class="pre">Heat_lo</span></code>.
+Each signal (except <code class="docutils literal notranslate"><span class="pre">Off</span></code>) is recorded using the following algorithm:</p>
+<ol class="arabic simple">
+<li><p>Get the remote and press the <strong>Power Button</strong> so that the display shows that A/C is ON.</p></li>
+<li><p>Set the A/C to the corresponding mode (see table below), leaving other parameters such as fan speed or vane on <strong>AUTO</strong> (if applicable).</p></li>
+<li><p>Press the <strong>POWER</strong> button to switch the A/C off.</p></li>
+<li><p>Start learning a new remote on Flipper if it’s the first button or press <code class="docutils literal notranslate"><span class="pre">+</span></code> to add a new button otherwise.</p></li>
+<li><p>Point the remote to Flipper’s IR receiver as directed and press <strong>POWER</strong> button once again.</p></li>
+<li><p>Save the resulting signal under the specified name.</p></li>
+<li><p>Repeat steps 2-6 for each signal from the table below.</p></li>
+</ol>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Signal</p></th>
+<th class="head text-center"><p>Mode</p></th>
+<th class="head text-center"><p>Temperature</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Dh</p></td>
+<td class="text-center"><p>Dehumidify</p></td>
+<td class="text-center"><p>N/A</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Cool_hi</p></td>
+<td class="text-center"><p>Cooling</p></td>
+<td class="text-center"><p>See note</p></td>
+<td><p>Lowest temperature in cooling mode</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Cool_lo</p></td>
+<td class="text-center"><p>Cooling</p></td>
+<td class="text-center"><p>23°C</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Heat_hi</p></td>
+<td class="text-center"><p>Heating</p></td>
+<td class="text-center"><p>See note</p></td>
+<td><p>Highest temperature in heating mode</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Heat_lo</p></td>
+<td class="text-center"><p>Heating</p></td>
+<td class="text-center"><p>23°C</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Finally, record the <code class="docutils literal notranslate"><span class="pre">Off</span></code> signal:</p>
+<ol class="arabic simple">
+<li><p>Make sure the display shows that the A/C is ON.</p></li>
+<li><p>Start learning a new signal on Flipper and point the remote towards the IR receiver.</p></li>
+<li><p>Press the <strong>POWER</strong> button so that the remote shows the OFF state.</p></li>
+<li><p>Save the resulting signal under the name <code class="docutils literal notranslate"><span class="pre">Off</span></code>.</p></li>
+</ol>
+<p>The resulting remote file should now contain 6 signals. You can omit any of them, but you then won’t be able to use their functionality.
+Test the file against the actual device. Make sure that every signal does what it’s supposed to.</p>
+<p>If everything checks out, append these signals <strong>to the end</strong> of the <a class="reference internal" href="#/assets/resources/infrared/assets/ac.ir"><span class="xref myst">A/C universal remote file</span></a>.</p>
+</section>
+<section id="final-steps">
+<h2>Final steps<a class="headerlink" href="#final-steps" title="Permalink to this heading"></a></h2>
+<p>The order of signals is not important, but they should be preceded by the following comment: <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Model:</span> <span class="pre">&lt;Your</span> <span class="pre">model</span> <span class="pre">name&gt;</span></code> in order to keep the library organized.</p>
+<p>When done, open a pull request containing the changed file.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="UnitTests.html" class="btn btn-neutral float-left" title="Unit tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="UniversalRemotes.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

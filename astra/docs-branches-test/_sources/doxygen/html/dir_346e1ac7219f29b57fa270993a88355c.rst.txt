@@ -1,0 +1,14 @@
+.. meta::c4e93f57da3e8260865b2aac36224258100c5815018a85ecc2fa02366bb2865a784c459f0558ee66a59283079bd3fcc29b0bf30866c5e4fe0ec5133a4cfd57db
+
+:orphan:
+
+.. title:: Flipper Zero Firmware: /Users/astrr/flipper/flipperzero-firmware/applications/debug/unit_tests/varint Directory Reference
+
+/Users/astrr/flipper/flipperzero-firmware/applications/debug/unit\_tests/varint Directory Reference
+===================================================================================================
+
+.. container:: doxygen-content
+
+   
+   .. raw:: html
+     :file: dir_346e1ac7219f29b57fa270993a88355c.html

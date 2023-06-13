@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAP (Flipper Application Package) &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Flipper Build Tool" href="fbt.html" />
+    <link rel="prev" title="Flipper Application Manifests (.fam)" href="AppManifests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FAP (Flipper Application Package)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-set-up-an-application-to-be-built-as-a-fap">How to set up an application to be built as a FAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fap-assets">FAP assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-faps">Debugging FAPs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-debugging-environment">Setting up debugging environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-flipper-runs-an-application-from-an-sd-card">How Flipper runs an application from an SD card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-versioning">API versioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#symbol-table">Symbol table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UniversalRemotes.html">Universal Remotes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FAP (Flipper Application Package)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/AppsOnSDCard.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fap-flipper-application-package">
+<h1>FAP (Flipper Application Package)<a class="headerlink" href="#fap-flipper-application-package" title="Permalink to this heading"></a></h1>
+<p><a class="reference internal" href="fbt.html"><span class="std std-doc">fbt</span></a> supports building applications as FAP files. FAPs are essentially <code class="docutils literal notranslate"><span class="pre">.elf</span></code> executables with extra metadata and resources bundled in.</p>
+<p>FAPs are built with the <code class="docutils literal notranslate"><span class="pre">faps</span></code> target. They can also be deployed to the <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder with the <code class="docutils literal notranslate"><span class="pre">fap_dist</span></code> target.</p>
+<p>FAPs do not depend on being run on a specific firmware version. Compatibility is determined by the FAP’s metadata, which includes the required <a class="reference internal" href="#api-versioning"><span class="xref myst">API version</span></a>.</p>
+<section id="how-to-set-up-an-application-to-be-built-as-a-fap">
+<h2>How to set up an application to be built as a FAP<a class="headerlink" href="#how-to-set-up-an-application-to-be-built-as-a-fap" title="Permalink to this heading"></a></h2>
+<p>FAPs are created and developed the same way as internal applications that are part of the firmware.</p>
+<p>To build your application as a FAP, create a folder with your app’s source code in <code class="docutils literal notranslate"><span class="pre">applications_user</span></code>, then write its code the way you’d do when creating a regular built-in application. Then configure its <code class="docutils literal notranslate"><span class="pre">application.fam</span></code> manifest, and set its <em>apptype</em> to FlipperAppType.EXTERNAL. See <a class="reference internal" href="AppManifests.html#application-definition"><span class="std std-ref">Application Manifests</span></a> for more details.</p>
+<ul class="simple">
+<li><p>To build your application, run <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">fap_{APPID}</span></code>, where APPID is your application’s ID in its manifest.</p></li>
+<li><p>To build your app and upload it over USB to run on Flipper, use <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">launch_app</span> <span class="pre">APPSRC=applications_user/path/to/app</span></code>. This command is configured in the default <a class="reference internal" href="#../.vscode/ReadMe.md"><span class="xref myst">VS Code profile</span></a> as a “Launch App on Flipper” build action (Ctrl+Shift+B menu).</p></li>
+<li><p>To build all FAPs, run <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">faps</span></code> or <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">fap_dist</span></code>.</p></li>
+</ul>
+</section>
+<section id="fap-assets">
+<h2>FAP assets<a class="headerlink" href="#fap-assets" title="Permalink to this heading"></a></h2>
+<p>FAPs can include static and animated images as private assets. They will be automatically compiled alongside application sources and can be referenced the same way as assets from the main firmware.</p>
+<p>To use that feature, put your images in a subfolder inside your application’s folder, then reference that folder in your application’s manifest in the <code class="docutils literal notranslate"><span class="pre">fap_icon_assets</span></code> field. See <a class="reference internal" href="AppManifests.html#application-definition"><span class="std std-ref">Application Manifests</span></a> for more details.</p>
+<p>To use these assets in your application, put <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;{APPID}_icons.h&quot;</span></code> in your application’s source code, where <code class="docutils literal notranslate"><span class="pre">{APPID}</span></code> is the <code class="docutils literal notranslate"><span class="pre">appid</span></code> value field from your application’s manifest. Then you can use all icons from your application’s assets the same way as if they were a part of <code class="docutils literal notranslate"><span class="pre">assets_icons.h</span></code> of the main firmware.</p>
+<p>Images and animated icons should follow the same <a class="reference internal" href="#../assets/ReadMe.md#asset-naming-rules"><span class="xref myst">naming convention</span></a> as those from the main firmware.</p>
+</section>
+<section id="debugging-faps">
+<h2>Debugging FAPs<a class="headerlink" href="#debugging-faps" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> includes a script for gdb-py to provide debugging support for FAPs, <code class="docutils literal notranslate"><span class="pre">debug/flipperapps.py</span></code>. It is loaded in default debugging configurations by <code class="docutils literal notranslate"><span class="pre">fbt</span></code> and stock VS Code configurations.</p>
+<p>With it, you can debug FAPs as if they were a part of the main firmware — inspect variables, set breakpoints, step through the code, etc.</p>
+<p>If debugging session is active, firmware will trigger a breakpoint after loading a FAP it into memory, but before running any code from it. This allows you to set breakpoints in the FAP’s code. Note that any breakpoints set before the FAP is loaded may need re-setting after the FAP is actually loaded, since before loading it debugger cannot know the exact address of the FAP’s code.</p>
+<section id="setting-up-debugging-environment">
+<h3>Setting up debugging environment<a class="headerlink" href="#setting-up-debugging-environment" title="Permalink to this heading"></a></h3>
+<p>The debugging support script looks up debugging information in the latest firmware build directory (<code class="docutils literal notranslate"><span class="pre">build/latest</span></code>). That directory is symlinked by <code class="docutils literal notranslate"><span class="pre">fbt</span></code> to the latest firmware configuration (Debug or Release) build directory when you run <code class="docutils literal notranslate"><span class="pre">./fbt</span></code> for the chosen configuration. See <a class="reference internal" href="fbt.html#nb"><span class="std std-ref">fbt docs</span></a> for details.</p>
+<p>To debug FAPs, do the following:</p>
+<ol class="arabic simple">
+<li><p>Build firmware with <code class="docutils literal notranslate"><span class="pre">./fbt</span></code></p></li>
+<li><p>Flash it with <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">flash</span></code></p></li>
+<li><p><a class="reference internal" href="#how-to-set-up-an-application-to-be-built-as-a-fap"><span class="xref myst">Build your FAP</span></a> and run it on Flipper</p></li>
+</ol>
+<p>After that, you can attach with <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">debug</span></code> or VS Code and use all debug features.</p>
+<p>It is <strong>important</strong> that firmware and application build type (debug/release) match and that the matching firmware folder is linked as <code class="docutils literal notranslate"><span class="pre">build/latest</span></code>. Otherwise, debugging will not work.</p>
+</section>
+</section>
+<section id="how-flipper-runs-an-application-from-an-sd-card">
+<h2>How Flipper runs an application from an SD card<a class="headerlink" href="#how-flipper-runs-an-application-from-an-sd-card" title="Permalink to this heading"></a></h2>
+<p>Flipper’s MCU cannot run code directly from external storage, so it needs to be copied to RAM first. That is done by the App Loader application responsible for loading the FAP from the SD card, verifying its integrity and compatibility, copying it to RAM, and adjusting it for its new location.</p>
+<p>Since FAP has to be loaded to RAM to be executed, the amount of RAM available for allocations from heap is reduced compared to running the same app from flash, as a part of the firmware. Note that the amount of occupied RAM is less than the total FAP file size since only code and data sections are allocated, while the FAP file includes extra information only used at app load time.</p>
+<p>Applications are built for a specific API version. It is a part of the hardware target’s definition and contains a major and minor version number. The App Loader checks if the application’s major API version matches the firmware’s major API version.</p>
+<p>The App Loader allocates memory for the application and copies it to RAM, processing relocations and providing concrete addresses for imported symbols using the <a class="reference internal" href="#symbol-table"><span class="xref myst">symbol table</span></a>. Then it starts the application.</p>
+</section>
+<section id="api-versioning">
+<h2>API versioning<a class="headerlink" href="#api-versioning" title="Permalink to this heading"></a></h2>
+<p>Not all parts of firmware are available for external applications. A subset of available functions and variables is defined in the “api_symbols.csv” file, which is a part of the firmware target definition in the <code class="docutils literal notranslate"><span class="pre">firmware/targets/</span></code> directory.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> uses semantic versioning for the API. The major version is incremented when there are breaking changes in the API. The minor version is incremented when new features are added.</p>
+<p>Breaking changes include:</p>
+<ul class="simple">
+<li><p>Removing a function or a global variable</p></li>
+<li><p>Changing the signature of a function</p></li>
+</ul>
+<p>API versioning is mostly automated by <code class="docutils literal notranslate"><span class="pre">fbt</span></code>. When rebuilding the firmware, <code class="docutils literal notranslate"><span class="pre">fbt</span></code> checks if there are any changes in the API exposed by headers gathered from <code class="docutils literal notranslate"><span class="pre">SDK_HEADERS</span></code>. If so, it stops the build, adjusts the API version, and asks the user to go through the changes in the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file. New entries are marked with a “<code class="docutils literal notranslate"><span class="pre">?</span></code>” mark, and the user is supposed to change the mark to “<code class="docutils literal notranslate"><span class="pre">+</span></code>” for the entry to be exposed for FAPs, or to “<code class="docutils literal notranslate"><span class="pre">-</span></code>” for it to be unavailable.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> will not allow building a firmware until all “<code class="docutils literal notranslate"><span class="pre">?</span></code>” entries are changed to “<code class="docutils literal notranslate"><span class="pre">+</span></code>” or “<code class="docutils literal notranslate"><span class="pre">-</span></code>“.</p>
+<p><strong>NB:</strong> <code class="docutils literal notranslate"><span class="pre">fbt</span></code> automatically manages the API version. The only case where manually incrementing the major API version is allowed (and required) is when existing “<code class="docutils literal notranslate"><span class="pre">+</span></code>” entries are to be changed to “<code class="docutils literal notranslate"><span class="pre">-</span></code>“.</p>
+<section id="symbol-table">
+<h3>Symbol table<a class="headerlink" href="#symbol-table" title="Permalink to this heading"></a></h3>
+<p>The symbol table is a list of symbols exported by firmware and available for external applications. It is generated by <code class="docutils literal notranslate"><span class="pre">fbt</span></code> from the API symbols file and is used by the App Loader to resolve addresses of imported symbols. It is build as a part of the <code class="docutils literal notranslate"><span class="pre">fap_loader</span></code> application.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> also checks if all imported symbols are present in the symbol table. If there are any missing symbols, it will issue a warning listing them. The application won’t be able to run on the device until all required symbols are provided in the symbol table.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AppManifests.html" class="btn btn-neutral float-left" title="Flipper Application Manifests (.fam)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fbt.html" class="btn btn-neutral float-right" title="Flipper Build Tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="AppsOnSDCard.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

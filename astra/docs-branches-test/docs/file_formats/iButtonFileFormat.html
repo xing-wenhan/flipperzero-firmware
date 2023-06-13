@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iButton key file format &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Infrared Flipper File Formats" href="InfraredFileFormats.html" />
+    <link rel="prev" title="BadUSB File Format" href="BadUsbScriptFormat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Flipper Zero File Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html">BadUSB File Format</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">iButton key file format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-history">Version history</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#current-version">2. Current version.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initial-version">1. Initial version.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html">Infrared Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html">LF RFID key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html">NFC Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html">File Formats for Flipper’s SubGhz Subsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#subghz-configuration-files">SubGhz configuration files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OTA.html">Flipper Zero OTA update process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flipper Zero File Formats</a></li>
+      <li class="breadcrumb-item active">iButton key file format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/file_formats/iButtonFileFormat.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ibutton-key-file-format">
+<h1>iButton key file format<a class="headerlink" href="#ibutton-key-file-format" title="Permalink to this heading"></a></h1>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Filetype</span><span class="p">:</span> <span class="n">Flipper</span> <span class="n">iButton</span> <span class="n">key</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">Protocol</span><span class="p">:</span> <span class="n">DS1992</span>
+<span class="n">Rom</span> <span class="n">Data</span><span class="p">:</span> <span class="mi">08</span> <span class="n">DE</span> <span class="n">AD</span> <span class="n">BE</span> <span class="n">EF</span> <span class="n">FA</span> <span class="n">CE</span> <span class="mi">4</span><span class="n">E</span>
+<span class="n">Sram</span> <span class="n">Data</span><span class="p">:</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">65</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">61</span> <span class="mi">47</span> <span class="mi">69</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">59</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">75</span> <span class="mi">55</span> <span class="mi">70</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">65</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">61</span> <span class="mi">4</span><span class="n">C</span> <span class="mi">65</span> <span class="mi">74</span> <span class="mi">59</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">75</span> <span class="mi">44</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">77</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">65</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">61</span> <span class="mi">52</span> <span class="mi">75</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">41</span> <span class="mi">72</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">75</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">64</span> <span class="mi">41</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">64</span> <span class="mi">44</span> <span class="mi">65</span> <span class="mi">73</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">74</span> <span class="mi">59</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">75</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">65</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">61</span> <span class="mi">4</span><span class="n">D</span> <span class="mi">61</span> <span class="mi">6</span><span class="n">B</span> <span class="mi">65</span> <span class="mi">59</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">75</span> <span class="mi">43</span> <span class="mi">72</span> <span class="mi">79</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">65</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">61</span> <span class="mi">53</span> <span class="mi">61</span> <span class="mi">79</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">64</span> <span class="mi">62</span> <span class="mi">79</span> <span class="mi">65</span> <span class="mi">4</span><span class="n">E</span> <span class="mi">65</span> <span class="mi">76</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">47</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">6</span><span class="n">E</span> <span class="mi">61</span> <span class="mi">54</span> <span class="mi">65</span> <span class="mi">6</span><span class="n">C</span> <span class="mi">6</span><span class="n">C</span> <span class="mi">41</span> <span class="mi">4</span><span class="n">C</span> <span class="mi">69</span> <span class="mi">65</span>
+</pre></div>
+</div>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>Filename extension: <code class="docutils literal notranslate"><span class="pre">.ibtn</span></code></p>
+<p>The file stores a single iButton key, complete with all data required by the protocol.</p>
+</section>
+<section id="version-history">
+<h2>Version history<a class="headerlink" href="#version-history" title="Permalink to this heading"></a></h2>
+<section id="current-version">
+<h3>2. Current version.<a class="headerlink" href="#current-version" title="Permalink to this heading"></a></h3>
+<p>Changelog:</p>
+<ul class="simple">
+<li><p>Added support for different Dallas protocols</p></li>
+<li><p>Fields after <code class="docutils literal notranslate"><span class="pre">Protocol</span></code> are protocol-dependent for flexibiliy</p></li>
+</ul>
+<section id="format-fields">
+<h4>Format fields<a class="headerlink" href="#format-fields" title="Permalink to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Protocol</p></td>
+<td><p>string</p></td>
+<td><p>Currently supported: DS1990, DS1992, DS1996, DS1971, DSGeneric*, Cyfral, Metakom</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rom Data</p></td>
+<td><p>hex</p></td>
+<td><p>Read-only memory data (Dallas protocols only)</p></td>
+</tr>
+<tr class="row-even"><td><p>Sram Data</p></td>
+<td><p>hex</p></td>
+<td><p>Static RAM data (DS1992 and DS1996 only)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eeprom Data</p></td>
+<td><p>hex</p></td>
+<td><p>EEPROM data (DS1971 only)</p></td>
+</tr>
+<tr class="row-even"><td><p>Data</p></td>
+<td><p>hex</p></td>
+<td><p>Key data (Cyfral &amp; Metakom only)</p></td>
+</tr>
+</tbody>
+</table>
+<p>NOTE 1: DSGeneric is a catch-all protocol for all unknown 1-Wire devices. It reads only the ROM and does not perform any checks on the read data.
+It can also be used if a key with a deliberately invalid family code or checksum is required.</p>
+<p>NOTE 2: When adding new protocols, it is not necessarily to increase the format version, define the format in the protocol implementation instead.</p>
+</section>
+</section>
+<section id="initial-version">
+<h3>1. Initial version.<a class="headerlink" href="#initial-version" title="Permalink to this heading"></a></h3>
+<p>Deprecated, will be converted to current version upon saving.</p>
+<section id="id1">
+<h4>Format fields<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Key type</p></td>
+<td><p>string</p></td>
+<td><p>Currently supported: Cyfral, Dallas, Metakom</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data</p></td>
+<td><p>hex</p></td>
+<td><p>Key data</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="BadUsbScriptFormat.html" class="btn btn-neutral float-left" title="BadUSB File Format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="InfraredFileFormats.html" class="btn btn-neutral float-right" title="Infrared Flipper File Formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/docs-branches-test
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../../870-docs-autogen/index.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="iButtonFileFormat.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

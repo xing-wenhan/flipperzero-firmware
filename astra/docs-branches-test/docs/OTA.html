@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Zero OTA update process &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Roadmap" href="RoadMap.html" />
+    <link rel="prev" title="Reading RAW RFID data" href="LFRFIDRaw.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Flipper Zero OTA update process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#executing-code-from-ram">Executing code from RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-flipper-ota-work">How does Flipper OTA work?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#backing-up-internal-storage-int">1. Backing up internal storage (<code class="docutils literal notranslate"><span class="pre">/int</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performing-device-update">2. Performing device update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restoring-internal-storage-and-updating-resources">3. Restoring internal storage and updating resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#update-manifest">Update manifest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mandatory-fields">Mandatory fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-fields">Optional fields</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ota-update-error-codes">OTA update error codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-update-packages">Building update packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#full-package">Full package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-package">Minimal package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-update-bundles">Customizing update bundles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-partial-update-packages">Building partial update packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Zero OTA update process</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/OTA.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flipper-zero-ota-update-process">
+<h1>Flipper Zero OTA update process<a class="headerlink" href="#flipper-zero-ota-update-process" title="Permalink to this heading"></a></h1>
+<section id="executing-code-from-ram">
+<h2>Executing code from RAM<a class="headerlink" href="#executing-code-from-ram" title="Permalink to this heading"></a></h2>
+<p>In Flipper firmware, we have a special boot mode that loads a specially crafted system image into RAM and transfers control to it. System image executing in RAM has full write access to Flipper’s entire flash memory — something that’s not possible when running main code from the same flash.</p>
+<p>We leverage that boot mode to perform OTA firmware updates, including operations on a radio stack running on the second MCU core.</p>
+</section>
+<section id="how-does-flipper-ota-work">
+<h2>How does Flipper OTA work?<a class="headerlink" href="#how-does-flipper-ota-work" title="Permalink to this heading"></a></h2>
+<p>Installation of OTA updates goes through 3 stages:</p>
+<section id="backing-up-internal-storage-int">
+<h3>1. Backing up internal storage (<code class="docutils literal notranslate"><span class="pre">/int</span></code>)<a class="headerlink" href="#backing-up-internal-storage-int" title="Permalink to this heading"></a></h3>
+<p>It is a special partition of Flipper’s flash memory, taking up all available space not used by the firmware code. Newer versions of firmware may be of different size, and simply installing them would cause flash repartitioning and data loss.</p>
+<p>So, before taking any action on the firmware, we back up the current configuration from <code class="docutils literal notranslate"><span class="pre">/int</span></code> into a plain tar archive on the SD card.</p>
+</section>
+<section id="performing-device-update">
+<h3>2. Performing device update<a class="headerlink" href="#performing-device-update" title="Permalink to this heading"></a></h3>
+<p>The main firmware loads an updater image — a customized build of the main Flipper firmware — into RAM and runs it. Updater performs operations on system flash as described by an Update manifest file.</p>
+<p>First, if there’s a Radio stack image bundled with the update, updater compares its version with the currently installed one. If they don’t match, updater performs stack deinstallation followed by writing and installing a new one. The installation itself is performed by proprietary software FUS running on Core2, and leads to a series of system restarts.</p>
+<p>Then, updater validates and corrects Option Bytes — a special memory region containing low-level configuration for Flipper’s MCU.</p>
+<p>After that, updater loads a <code class="docutils literal notranslate"><span class="pre">.dfu</span></code> file with firmware to be flashed, checks its integrity using CRC32, writes it to system flash and validates written data.</p>
+</section>
+<section id="restoring-internal-storage-and-updating-resources">
+<h3>3. Restoring internal storage and updating resources<a class="headerlink" href="#restoring-internal-storage-and-updating-resources" title="Permalink to this heading"></a></h3>
+<p>After performing operations on flash memory, the system restarts into newly flashed firmware. Then it performs restoration of previously backed up <code class="docutils literal notranslate"><span class="pre">/int</span></code> contents.</p>
+<p>If the update package contains an additional resources archive, it is extracted onto the SD card.</p>
+</section>
+</section>
+<section id="update-manifest">
+<h2>Update manifest<a class="headerlink" href="#update-manifest" title="Permalink to this heading"></a></h2>
+<p>An update package comes with a manifest that contains a description of its contents. The manifest is in Flipper File Format — a simple text file, comprised of key-value pairs.</p>
+<section id="mandatory-fields">
+<h3>Mandatory fields<a class="headerlink" href="#mandatory-fields" title="Permalink to this heading"></a></h3>
+<p>An update manifest must contain the following keys in the given order:</p>
+<ul class="simple">
+<li><p><strong>Filetype</strong>: a constant string, “Flipper firmware upgrade configuration”.</p></li>
+<li><p><strong>Version</strong>: manifest version. The current value is 2.</p></li>
+<li><p><strong>Info</strong>: arbitrary string, describing package contents.</p></li>
+<li><p><strong>Target</strong>: hardware revision for which the package is built.</p></li>
+<li><p><strong>Loader</strong>: file name of stage 2 loader that is executed from RAM.</p></li>
+<li><p><strong>Loader CRC</strong>: CRC32 of loader file. Note that it is represented in little-endian hex.</p></li>
+</ul>
+</section>
+<section id="optional-fields">
+<h3>Optional fields<a class="headerlink" href="#optional-fields" title="Permalink to this heading"></a></h3>
+<p>Other fields may have empty values. In this case, updater skips all operations related to these values.</p>
+<ul class="simple">
+<li><p><strong>Radio</strong>: file name of radio stack image, provided by STM.</p></li>
+<li><p><strong>Radio address</strong>: address to install the radio stack at. It is specified in Release Notes by STM.</p></li>
+<li><p><strong>Radio version</strong>: radio major, minor and sub versions followed by branch, release and stack type packed into 6 hex-encoded bytes.</p></li>
+<li><p><strong>Radio CRC</strong>: CRC32 of radio image.</p></li>
+<li><p><strong>Resources</strong>: file name of TAR archive with resources to be extracted onto the SD card.</p></li>
+<li><p><strong>OB reference</strong>, <strong>OB mask</strong>, <strong>OB write mask</strong>: reference values for validating and correcting option bytes.</p></li>
+</ul>
+</section>
+</section>
+<section id="ota-update-error-codes">
+<h2>OTA update error codes<a class="headerlink" href="#ota-update-error-codes" title="Permalink to this heading"></a></h2>
+<p>We designed the OTA update process to be as fail-safe as possible. We don’t start any risky operations before validating all related pieces of data to ensure we don’t leave the device in a partially updated, or bricked, state.</p>
+<p>Even if something goes wrong, updater allows you to retry failed operations and reports its state with an error code. These error codes have an <code class="docutils literal notranslate"><span class="pre">[XX-YY]</span></code> format, where <code class="docutils literal notranslate"><span class="pre">XX</span></code> encodes the failed operation, and <code class="docutils literal notranslate"><span class="pre">YY</span></code> contains extra details on its progress where the error occurred.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Stage description</p></th>
+<th class="head text-right"><p>Code</p></th>
+<th class="head"><p>Progress</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Loading update manifest</p></td>
+<td class="text-right"><p><strong>1</strong></p></td>
+<td><p><strong>13</strong></p></td>
+<td><p>Updater reported hardware version mismatch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>20</strong></p></td>
+<td><p>Failed to get saved manifest path</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>30</strong></p></td>
+<td><p>Failed to load manifest</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>40</strong></p></td>
+<td><p>Unsupported update package version</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>50</strong></p></td>
+<td><p>Package has mismatching HW target</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>60</strong></p></td>
+<td><p>Missing DFU file</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>80</strong></p></td>
+<td><p>Missing radio firmware file</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Backing up LFS</p></td>
+<td class="text-right"><p><strong>2</strong></p></td>
+<td><p><strong>0-100</strong></p></td>
+<td><p>FS read/write error</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Checking radio FW</p></td>
+<td class="text-right"><p><strong>3</strong></p></td>
+<td><p><strong>0-99</strong></p></td>
+<td><p>Error reading radio firmware file</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>100</strong></p></td>
+<td><p>CRC mismatch</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Uninstalling radio FW</p></td>
+<td class="text-right"><p><strong>4</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p>SHCI Delete command error</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>80</strong></p></td>
+<td><p>Error awaiting command status</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Writing radio FW</p></td>
+<td class="text-right"><p><strong>5</strong></p></td>
+<td><p><strong>0-100</strong></p></td>
+<td><p>Block read/write error</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Installing radio FW</p></td>
+<td class="text-right"><p><strong>6</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p>SHCI Install command error</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>80</strong></p></td>
+<td><p>Error awaiting command status</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Radio is updating</p></td>
+<td class="text-right"><p><strong>7</strong></p></td>
+<td><p><strong>10</strong></p></td>
+<td><p>Error waiting for operation completion</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Validating opt. bytes</p></td>
+<td class="text-right"><p><strong>8</strong></p></td>
+<td><p><strong>yy</strong></p></td>
+<td><p>Option byte code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Checking DFU file</p></td>
+<td class="text-right"><p><strong>9</strong></p></td>
+<td><p><strong>0</strong></p></td>
+<td><p>Error opening DFU file</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>1-98</strong></p></td>
+<td><p>Error reading DFU file</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p><strong>99-100</strong></p></td>
+<td><p>Corrupted DFU file</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Writing flash</p></td>
+<td class="text-right"><p><strong>10</strong></p></td>
+<td><p><strong>0-100</strong></p></td>
+<td><p>Block read/write error</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Validating flash</p></td>
+<td class="text-right"><p><strong>11</strong></p></td>
+<td><p><strong>0-100</strong></p></td>
+<td><p>Block read/write error</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Restoring LFS</p></td>
+<td class="text-right"><p><strong>12</strong></p></td>
+<td><p><strong>0-100</strong></p></td>
+<td><p>FS read/write error</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Updating resources</p></td>
+<td class="text-right"><p><strong>13</strong></p></td>
+<td><p><strong>0-100</strong></p></td>
+<td><p>SD card read/write error</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="building-update-packages">
+<h2>Building update packages<a class="headerlink" href="#building-update-packages" title="Permalink to this heading"></a></h2>
+<section id="full-package">
+<h3>Full package<a class="headerlink" href="#full-package" title="Permalink to this heading"></a></h3>
+<p>To build a full update package, including firmware, radio stack and resources for the SD card, run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">COMPACT=1</span> <span class="pre">DEBUG=0</span> <span class="pre">updater_package</span></code></p>
+</section>
+<section id="minimal-package">
+<h3>Minimal package<a class="headerlink" href="#minimal-package" title="Permalink to this heading"></a></h3>
+<p>To build a minimal update package, including only firmware, run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">COMPACT=1</span> <span class="pre">DEBUG=0</span> <span class="pre">updater_minpackage</span></code></p>
+</section>
+<section id="customizing-update-bundles">
+<h3>Customizing update bundles<a class="headerlink" href="#customizing-update-bundles" title="Permalink to this heading"></a></h3>
+<p>Default update packages are built with Bluetooth Light stack.
+You can pick a different stack if your firmware version supports it, and build a bundle with it by passing the stack type and binary name to <code class="docutils literal notranslate"><span class="pre">fbt</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">updater_package</span> <span class="pre">COMPACT=1</span> <span class="pre">DEBUG=0</span> <span class="pre">COPRO_OB_DATA=scripts/ob_custradio.data</span> <span class="pre">COPRO_STACK_BIN=stm32wb5x_BLE_Stack_full_fw.bin</span> <span class="pre">COPRO_STACK_TYPE=ble_full</span></code></p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">COPRO_OB_DATA</span></code> must point to a valid file in the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> folder containing reference Option Byte data matching your radio stack type.</p>
+<p>In certain cases, you might have to confirm your intentions by adding <code class="docutils literal notranslate"><span class="pre">COPRO_DISCLAIMER=...</span></code> to the build command line.</p>
+</section>
+<section id="building-partial-update-packages">
+<h3>Building partial update packages<a class="headerlink" href="#building-partial-update-packages" title="Permalink to this heading"></a></h3>
+<p>You can customize package contents by calling <code class="docutils literal notranslate"><span class="pre">scripts/update.py</span></code> directly.
+For example, to build a package only for installing BLE FULL stack:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scripts/update.py<span class="w"> </span>generate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-t<span class="w"> </span>f7<span class="w"> </span>-d<span class="w"> </span>r13.3_full<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;BLE FULL 13.3&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--stage<span class="w"> </span>dist/f7/flipper-z-f7-updater-*.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--radio<span class="w"> </span>lib/STM32CubeWB/Projects/STM32WB_Copro_Wireless_Binaries/STM32WB5x/stm32wb5x_BLE_Stack_full_fw.bin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--radiotype<span class="w"> </span>ble_full
+</pre></div>
+</div>
+<p>For the full list of options, check <code class="docutils literal notranslate"><span class="pre">scripts/update.py</span> <span class="pre">generate</span></code> help.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="LFRFIDRaw.html" class="btn btn-neutral float-left" title="Reading RAW RFID data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RoadMap.html" class="btn btn-neutral float-right" title="Roadmap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/docs-branches-test
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../870-docs-autogen/index.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="OTA.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
