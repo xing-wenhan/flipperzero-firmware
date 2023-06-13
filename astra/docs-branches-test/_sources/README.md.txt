@@ -1,1 +1,0 @@
-# flipperzero-documentation
