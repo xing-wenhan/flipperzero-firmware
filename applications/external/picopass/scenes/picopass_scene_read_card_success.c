@@ -93,7 +93,7 @@ void picopass_scene_read_card_success_on_enter(void* context) {
             furi_string_cat_printf(sio_str, "+SIO");
         }
 
-        if(pacs->key) {
+        if(pacs->key[0]) { // FIXME!
             if(pacs->sio) {
                 furi_string_cat_printf(sio_str, " ");
             }

@@ -42,28 +42,32 @@ FUNC_OBJ_INS_DEF(
      b) /* name of the input parameters of the function like object. The type are inherited from the interface. */
     ,
     {
-        /* code of the function object */
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByFrequencyAsc) {
-            return a->frequency < b->frequency ? -1 : a->frequency > b->frequency;
-        }
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByFrequencyDesc) {
-            return a->frequency > b->frequency ? -1 : a->frequency < b->frequency;
-        }
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByRSSIAsc) {
-            return a->rssi_max < b->rssi_max ? -1 : a->rssi_max > b->rssi_max;
-        }
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByRSSIDesc) {
-            return a->rssi_max > b->rssi_max ? -1 : a->rssi_max < b->rssi_max;
-        }
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByCountAsc) {
-            return a->count < b->count ? -1 : a->count > b->count;
-        }
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByCountDesc) {
-            return a->count > b->count ? -1 : a->count < b->count;
-        }
-        if(self->order_by == SubGhzFrequencyAnalyzerLogOrderBySeqAsc) {
-            return a->seq < b->seq ? -1 : a->seq > b->seq;
-        }
+        // /* code of the function object */
+        /*
+        FIXME:
+         error: array subscript 'struct SubGhzFrequencyAnalyzerLogItemArray_compare_by_s[0]' is partly outside array bounds of 'struct SubGhzFrequencyAnalyzerLogItemArray_cmp_obj_s[1]' [-Werror=array-bounds]
+        */
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByFrequencyAsc) {
+        //     return a->frequency < b->frequency ? -1 : a->frequency > b->frequency;
+        // }
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByFrequencyDesc) {
+        //     return a->frequency > b->frequency ? -1 : a->frequency < b->frequency;
+        // }
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByRSSIAsc) {
+        //     return a->rssi_max < b->rssi_max ? -1 : a->rssi_max > b->rssi_max;
+        // }
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByRSSIDesc) {
+        //     return a->rssi_max > b->rssi_max ? -1 : a->rssi_max < b->rssi_max;
+        // }
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByCountAsc) {
+        //     return a->count < b->count ? -1 : a->count > b->count;
+        // }
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderByCountDesc) {
+        //     return a->count > b->count ? -1 : a->count < b->count;
+        // }
+        // if(self->order_by == SubGhzFrequencyAnalyzerLogOrderBySeqAsc) {
+        //     return a->seq < b->seq ? -1 : a->seq > b->seq;
+        // }
 
         return a->seq > b->seq ? -1 : a->seq < b->seq;
     },
