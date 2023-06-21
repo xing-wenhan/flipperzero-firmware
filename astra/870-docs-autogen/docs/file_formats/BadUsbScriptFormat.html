@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BadUSB File Format &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="iButton key file format" href="iButtonFileFormat.html" />
+    <link rel="prev" title="Flipper Zero File Formats" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Flipper Zero File Formats</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BadUSB File Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-syntax">Command syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#script-file-format">Script file format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-set">Command set</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#comment-line">Comment line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delay">Delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#special-keys">Special keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modifier-keys">Modifier keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-hold-and-release">Key hold and release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wait-for-button-press">Wait for button press</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#string">String</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#string-delay">String delay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#repeat">Repeat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alt-numpad-input">ALT+Numpad input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sysrq">SysRq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usb-device-id">USB device ID</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html">iButton key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InfraredFileFormats.html">Infrared Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html">LF RFID key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html">NFC Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html">File Formats for Flipper’s SubGhz Subsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#subghz-configuration-files">SubGhz configuration files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flipper Zero File Formats</a></li>
+      <li class="breadcrumb-item active">BadUSB File Format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/file_formats/BadUsbScriptFormat.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="badusb-file-format">
+<h1>BadUSB File Format<a class="headerlink" href="#badusb-file-format" title="Permalink to this heading"></a></h1>
+<section id="command-syntax">
+<h2>Command syntax<a class="headerlink" href="#command-syntax" title="Permalink to this heading"></a></h2>
+<p>BadUsb app uses extended Duckyscript syntax. It is compatible with classic USB Rubber Ducky 1.0 scripts but provides some additional commands and features, such as custom USB ID, ALT+Numpad input method, SYSRQ command, and more functional keys.</p>
+</section>
+<section id="script-file-format">
+<h2>Script file format<a class="headerlink" href="#script-file-format" title="Permalink to this heading"></a></h2>
+<p>BadUsb app can execute only text scrips from <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files, no compilation is required. Both <code class="docutils literal notranslate"><span class="pre">\n</span></code> and <code class="docutils literal notranslate"><span class="pre">\r\n</span></code> line endings are supported. Empty lines are allowed. You can use spaces or tabs for line indentation.</p>
+</section>
+<section id="command-set">
+<h2>Command set<a class="headerlink" href="#command-set" title="Permalink to this heading"></a></h2>
+<section id="comment-line">
+<h3>Comment line<a class="headerlink" href="#comment-line" title="Permalink to this heading"></a></h3>
+<p>Just a single comment line. The interpreter will ignore all text after the REM command.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REM</p></td>
+<td><p>Comment text</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="delay">
+<h3>Delay<a class="headerlink" href="#delay" title="Permalink to this heading"></a></h3>
+<p>Pause script execution by a defined time.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DELAY</p></td>
+<td><p>Delay value in ms</p></td>
+<td><p>Single delay</p></td>
+</tr>
+<tr class="row-odd"><td><p>DEFAULT_DELAY</p></td>
+<td><p>Delay value in ms</p></td>
+<td><p>Add delay before every next command</p></td>
+</tr>
+<tr class="row-even"><td><p>DEFAULTDELAY</p></td>
+<td><p>Delay value in ms</p></td>
+<td><p>Same as DEFAULT_DELAY</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="special-keys">
+<h3>Special keys<a class="headerlink" href="#special-keys" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DOWNARROW / DOWN</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>LEFTARROW / LEFT</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>RIGHTARROW / RIGHT</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>UPARROW / UP</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>ENTER</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>DELETE</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>BACKSPACE</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>END</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>HOME</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ESCAPE / ESC</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>INSERT</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>PAGEUP</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>PAGEDOWN</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CAPSLOCK</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>NUMLOCK</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>SCROLLLOCK</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>PRINTSCREEN</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>BREAK</p></td>
+<td><p>Pause/Break key</p></td>
+</tr>
+<tr class="row-even"><td><p>PAUSE</p></td>
+<td><p>Pause/Break key</p></td>
+</tr>
+<tr class="row-odd"><td><p>SPACE</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>TAB</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>MENU</p></td>
+<td><p>Context menu key</p></td>
+</tr>
+<tr class="row-even"><td><p>APP</p></td>
+<td><p>Same as MENU</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fx</p></td>
+<td><p>F1-F12 keys</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="modifier-keys">
+<h3>Modifier keys<a class="headerlink" href="#modifier-keys" title="Permalink to this heading"></a></h3>
+<p>Can be combined with a special key command or a single character.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CONTROL / CTRL</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>SHIFT</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>ALT</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>WINDOWS / GUI</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>CTRL-ALT</p></td>
+<td><p>CTRL+ALT</p></td>
+</tr>
+<tr class="row-odd"><td><p>CTRL-SHIFT</p></td>
+<td><p>CTRL+SHIFT</p></td>
+</tr>
+<tr class="row-even"><td><p>ALT-SHIFT</p></td>
+<td><p>ALT+SHIFT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ALT-GUI</p></td>
+<td><p>ALT+WIN</p></td>
+</tr>
+<tr class="row-even"><td><p>GUI-SHIFT</p></td>
+<td><p>WIN+SHIFT</p></td>
+</tr>
+<tr class="row-odd"><td><p>GUI-CTRL</p></td>
+<td><p>WIN+CTRL</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="key-hold-and-release">
+<h2>Key hold and release<a class="headerlink" href="#key-hold-and-release" title="Permalink to this heading"></a></h2>
+<p>Up to 5 keys can be hold simultaneously.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HOLD</p></td>
+<td><p>Special key or single character</p></td>
+<td><p>Press and hold key untill RELEASE command</p></td>
+</tr>
+<tr class="row-odd"><td><p>RELEASE</p></td>
+<td><p>Special key or single character</p></td>
+<td><p>Release key</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wait-for-button-press">
+<h2>Wait for button press<a class="headerlink" href="#wait-for-button-press" title="Permalink to this heading"></a></h2>
+<p>Will wait indefinitely for a button to be pressed</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WAIT_FOR_BUTTON_PRESS</p></td>
+<td><p>None</p></td>
+<td><p>Will wait for the user to press a button to continue script execution</p></td>
+</tr>
+</tbody>
+</table>
+<section id="string">
+<h3>String<a class="headerlink" href="#string" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STRING</p></td>
+<td><p>Text string</p></td>
+<td><p>Print text string</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRINGLN</p></td>
+<td><p>Text string</p></td>
+<td><p>Print text string and press enter after it</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="string-delay">
+<h2>String delay<a class="headerlink" href="#string-delay" title="Permalink to this heading"></a></h2>
+<p>Delay between keypresses.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STRING_DELAY</p></td>
+<td><p>Delay value in ms</p></td>
+<td><p>Applied once to next appearing STRING command</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRINGDELAY</p></td>
+<td><p>Delay value in ms</p></td>
+<td><p>Same as STRING_DELAY</p></td>
+</tr>
+</tbody>
+</table>
+<section id="repeat">
+<h3>Repeat<a class="headerlink" href="#repeat" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REPEAT</p></td>
+<td><p>Number of additional repeats</p></td>
+<td><p>Repeat previous command</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="alt-numpad-input">
+<h3>ALT+Numpad input<a class="headerlink" href="#alt-numpad-input" title="Permalink to this heading"></a></h3>
+<p>On Windows and some Linux systems, you can print characters by holding <code class="docutils literal notranslate"><span class="pre">ALT</span></code> key and entering its code on Numpad.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ALTCHAR</p></td>
+<td><p>Character code</p></td>
+<td><p>Print single character</p></td>
+</tr>
+<tr class="row-odd"><td><p>ALTSTRING</p></td>
+<td><p>Text string</p></td>
+<td><p>Print text string using ALT+Numpad method</p></td>
+</tr>
+<tr class="row-even"><td><p>ALTCODE</p></td>
+<td><p>Text string</p></td>
+<td><p>Same as ALTSTRING, presents in some Duckyscript implementations</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sysrq">
+<h3>SysRq<a class="headerlink" href="#sysrq" title="Permalink to this heading"></a></h3>
+<p>Send <a class="reference external" href="https://en.wikipedia.org/wiki/Magic_SysRq_key">SysRq command</a></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SYSRQ</p></td>
+<td><p>Single character</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usb-device-id">
+<h3>USB device ID<a class="headerlink" href="#usb-device-id" title="Permalink to this heading"></a></h3>
+<p>You can set the custom ID of the Flipper USB HID device. ID command should be in the <strong>first line</strong> of script, it is executed before script run.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ID</p></td>
+<td><p>VID:PID Manufacturer:Product</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">1234:abcd</span> <span class="pre">Flipper</span> <span class="pre">Devices:Flipper</span> <span class="pre">Zero</span></code></p>
+<p>VID and PID are hex codes and are mandatory. Manufacturer and Product are text strings and are optional.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Flipper Zero File Formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="iButtonFileFormat.html" class="btn btn-neutral float-right" title="iButton key file format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="BadUsbScriptFormat.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

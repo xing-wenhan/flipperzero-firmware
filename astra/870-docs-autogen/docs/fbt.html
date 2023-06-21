@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipper Build Tool &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Furi HAL Debugging" href="FuriHalDebugging.html" />
+    <link rel="prev" title="FAP (Flipper Application Package)" href="AppsOnSDCard.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Flipper Build Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#invoking-fbt">Invoking FBT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-directories">Build directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vscode-integration">VSCode integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fbt-targets">FBT targets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#high-level-what-you-most-likely-need">High-level (what you most likely need)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-targets">Firmware targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assets">Assets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-parameters">Command-line parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-application-set">Firmware application set</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flipper Build Tool</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/fbt.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flipper-build-tool">
+<h1>Flipper Build Tool<a class="headerlink" href="#flipper-build-tool" title="Permalink to this heading"></a></h1>
+<p>FBT is the entry point for firmware-related commands and utilities.
+It is invoked by <code class="docutils literal notranslate"><span class="pre">./fbt</span></code> in the firmware project root directory. Internally, it is a wrapper around <a class="reference external" href="https://scons.org/">scons</a> build system.</p>
+<p>If you don’t need all features of <code class="docutils literal notranslate"><span class="pre">fbt</span></code> - like building the whole firmware - and only want to build and debug a single application, you can use <a class="reference external" href="https://pypi.org/project/ufbt/">ufbt</a>.</p>
+<section id="environment">
+<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this heading"></a></h2>
+<p>To use <code class="docutils literal notranslate"><span class="pre">fbt</span></code>, you only need <code class="docutils literal notranslate"><span class="pre">git</span></code> installed in your system.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> by default downloads and unpacks a pre-built toolchain, and then modifies environment variables for itself to use it. It does not contaminate your global system’s path with the toolchain.</p>
+<blockquote>
+<div><p>However, if you wish to use tools supplied with the toolchain outside <code class="docutils literal notranslate"><span class="pre">fbt</span></code>, you can open an <em>fbt shell</em>, with properly configured environment.</p>
+<ul class="simple">
+<li><p>On Windows, simply run <code class="docutils literal notranslate"><span class="pre">scripts/toolchain/fbtenv.cmd</span></code>.</p></li>
+<li><p>On Linux &amp; MacOS, run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">scripts/toolchain/fbtenv.sh</span></code> in a new shell.</p></li>
+<li><p>You can also type <code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">`./fbt</span> <span class="pre">-s</span> <span class="pre">env`</span> </code> in your shell. (Keep  the “.” at the beginning.)</p></li>
+</ul>
+</div></blockquote>
+<p>If your system is not supported by pre-built toolchain variants or you want to use custom versions of dependencies, you can <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">FBT_NOENV=1</span></code>. <code class="docutils literal notranslate"><span class="pre">fbt</span></code> will skip toolchain &amp; environment configuration and will expect all tools to be available on your system’s <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. <em>(this option is not available on Windows)</em></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">FBT_TOOLCHAIN_PATH</span></code> variable is set, <code class="docutils literal notranslate"><span class="pre">fbt</span></code> will use that directory to unpack toolchain into. By default, it downloads toolchain into <code class="docutils literal notranslate"><span class="pre">toolchain</span></code> subdirectory repo’s root.</p>
+<p>If you want to enable extra debug output for <code class="docutils literal notranslate"><span class="pre">fbt</span></code> and toolchain management scripts, you can <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">FBT_VERBOSE=1</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> always performs <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span></code> on start, unless you set <code class="docutils literal notranslate"><span class="pre">FBT_NO_SYNC=1</span></code> in the environment:</p>
+<ul class="simple">
+<li><p>On Windows, it’s <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">&quot;FBT_NO_SYNC=1&quot;</span></code> in the shell you’re running <code class="docutils literal notranslate"><span class="pre">fbt</span></code> from</p></li>
+<li><p>On *nix, it’s <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">FBT_NO_SYNC=1</span> <span class="pre">./fbt</span> <span class="pre">...</span></code></p></li>
+</ul>
+<blockquote>
+<div><p>There are more variables controlling basic <code class="docutils literal notranslate"><span class="pre">fbt</span></code> behavior. See <code class="docutils literal notranslate"><span class="pre">fbt</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">fbtenv</span></code> scripts’ sources for details.</p>
+</div></blockquote>
+</section>
+<section id="invoking-fbt">
+<h2>Invoking FBT<a class="headerlink" href="#invoking-fbt" title="Permalink to this heading"></a></h2>
+<p>To build with FBT, call it and specify configuration options &amp; targets to build. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">COMPACT=1</span> <span class="pre">DEBUG=0</span> <span class="pre">VERBOSE=1</span> <span class="pre">updater_package</span> <span class="pre">copro_dist</span></code></p>
+<p>To run cleanup (think of <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>) for specified targets, add the <code class="docutils literal notranslate"><span class="pre">-c</span></code> option.</p>
+</section>
+<section id="build-directories">
+<h2>Build directories<a class="headerlink" href="#build-directories" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> builds updater &amp; firmware in separate subdirectories in <code class="docutils literal notranslate"><span class="pre">build</span></code>, and their names depend on optimization settings (<code class="docutils literal notranslate"><span class="pre">COMPACT</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> options). However, for ease of integration with IDEs, the latest built variant’s directory is always linked as <code class="docutils literal notranslate"><span class="pre">built/latest</span></code>. Additionally, <code class="docutils literal notranslate"><span class="pre">compile_commands.json</span></code> is generated in that folder (it is used for code completion support in IDEs).</p>
+<p><code class="docutils literal notranslate"><span class="pre">build/latest</span></code> symlink &amp; compilation database are only updated upon <em>firmware build targets</em> - that is, when you’re re-building the firmware itself. Running other tasks, like firmware flashing or building update bundles <em>for a different debug/release configuration or hardware target</em>, does not update <code class="docutils literal notranslate"><span class="pre">built/latest</span></code> dir to point to that configuration.</p>
+</section>
+<section id="vscode-integration">
+<h2>VSCode integration<a class="headerlink" href="#vscode-integration" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">fbt</span></code> includes basic development environment configuration for VS Code. Run <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">vscode_dist</span></code> to deploy it. That will copy the initial environment configuration to the <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> folder. After that, you can use that configuration by starting VS Code and choosing the firmware root folder in the “File &gt; Open Folder” menu.</p>
+<ul class="simple">
+<li><p>On the first start, you’ll be prompted to install recommended plugins. We highly recommend installing them for the best development experience. <em>You can find a list of them in <code class="docutils literal notranslate"><span class="pre">.vscode/extensions.json</span></code>.</em></p></li>
+<li><p>Basic build tasks are invoked in the Ctrl+Shift+B menu.</p></li>
+<li><p>Debugging requires a supported probe. That includes:</p>
+<ul>
+<li><p>Wi-Fi devboard with stock firmware (blackmagic).</p></li>
+<li><p>ST-Link and compatible devices.</p></li>
+<li><p>J-Link for flashing and debugging (in VSCode only). <em>Note that J-Link tools are not included with our toolchain and you have to <a class="reference external" href="https://www.segger.com/downloads/jlink/">download</a> them yourself and put them on your system’s PATH.</em></p></li>
+</ul>
+</li>
+<li><p>Without a supported probe, you can install firmware on Flipper using the USB installation method.</p></li>
+</ul>
+</section>
+<section id="fbt-targets">
+<h2>FBT targets<a class="headerlink" href="#fbt-targets" title="Permalink to this heading"></a></h2>
+<p><strong><code class="docutils literal notranslate"><span class="pre">fbt</span></code></strong> keeps track of internal dependencies, so you only need to build the highest-level target you need, and <strong><code class="docutils literal notranslate"><span class="pre">fbt</span></code></strong> will make sure everything they depend on is up-to-date.</p>
+<section id="high-level-what-you-most-likely-need">
+<h3>High-level (what you most likely need)<a class="headerlink" href="#high-level-what-you-most-likely-need" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fw_dist</span></code> - build &amp; publish firmware to the <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder. This is a default target when no others are specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fap_dist</span></code> - build external plugins &amp; publish to the <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updater_package</span></code>, <code class="docutils literal notranslate"><span class="pre">updater_minpackage</span></code> - build a self-update package. The minimal version only includes the firmware’s DFU file; the full version also includes a radio stack &amp; resources for the SD card.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copro_dist</span></code> - bundle Core2 FUS+stack binaries for qFlipper.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flash</span></code> - flash the attached device with OpenOCD over ST-Link.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flash_usb</span></code>, <code class="docutils literal notranslate"><span class="pre">flash_usb_full</span></code> - build, upload and install the update package to the device over USB. See details on <code class="docutils literal notranslate"><span class="pre">updater_package</span></code> and <code class="docutils literal notranslate"><span class="pre">updater_minpackage</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code> - build and flash firmware, then attach with gdb with firmware’s .elf loaded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug_other</span></code>, <code class="docutils literal notranslate"><span class="pre">debug_other_blackmagic</span></code> - attach GDB without loading any <code class="docutils literal notranslate"><span class="pre">.elf</span></code>. It will allow you to manually add external <code class="docutils literal notranslate"><span class="pre">.elf</span></code> files with <code class="docutils literal notranslate"><span class="pre">add-symbol-file</span></code> in GDB.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updater_debug</span></code> - attach GDB with the updater’s <code class="docutils literal notranslate"><span class="pre">.elf</span></code> loaded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blackmagic</span></code> - debug firmware with Blackmagic probe (WiFi dev board).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">openocd</span></code> - just start OpenOCD.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_blackmagic</span></code> - output the blackmagic address in the GDB remote format. Useful for IDE integration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stlink</span></code> - output serial numbers for attached STLink probes. Used for specifying an adapter with <code class="docutils literal notranslate"><span class="pre">OPENOCD_ADAPTER_SERIAL=...</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lint</span></code>, <code class="docutils literal notranslate"><span class="pre">format</span></code> - run clang-format on the C source code to check and reformat it according to the <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> specs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lint_py</span></code>, <code class="docutils literal notranslate"><span class="pre">format_py</span></code> - run <a class="reference external" href="https://black.readthedocs.io/en/stable/index.html">black</a> on the Python source code, build system files &amp; application manifests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firmware_pvs</span></code> - generate a PVS Studio report for the firmware. Requires PVS Studio to be available on your system’s <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cli</span></code> - start a Flipper CLI session over USB.</p></li>
+</ul>
+</section>
+<section id="firmware-targets">
+<h3>Firmware targets<a class="headerlink" href="#firmware-targets" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">faps</span></code> - build all external &amp; plugin apps as <a class="reference internal" href="AppsOnSDCard.html#fap-flipper-application-package"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">.faps</span></code></span></a>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">fbt</span></code></strong> also defines per-app targets. For example, for an app with <code class="docutils literal notranslate"><span class="pre">appid=snake_game</span></code> target names are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fap_snake_game</span></code>, etc. - build single app as <code class="docutils literal notranslate"><span class="pre">.fap</span></code> by its application ID.</p></li>
+<li><p>Check out <a class="reference internal" href="#command-line-parameters"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">--extra-ext-apps</span></code></span></a> for force adding extra apps to external build.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fap_snake_game_list</span></code>, etc - generate source + assembler listing for app’s <code class="docutils literal notranslate"><span class="pre">.fap</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flash</span></code>, <code class="docutils literal notranslate"><span class="pre">firmware_flash</span></code> - flash the current version to the attached device with OpenOCD over ST-Link.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jflash</span></code> - flash the current version to the attached device with JFlash using a J-Link probe. The JFlash executable must be on your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flash_blackmagic</span></code> - flash the current version to the attached device with a Blackmagic probe.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firmware_all</span></code>, <code class="docutils literal notranslate"><span class="pre">updater_all</span></code> - build a basic set of binaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firmware_list</span></code>, <code class="docutils literal notranslate"><span class="pre">updater_list</span></code> - generate source + assembler listing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">firmware_cdb</span></code>, <code class="docutils literal notranslate"><span class="pre">updater_cdb</span></code> - generate a <code class="docutils literal notranslate"><span class="pre">compilation_database.json</span></code> file for external tools and IDEs. It can be created without actually building the firmware.</p></li>
+</ul>
+</section>
+<section id="assets">
+<h3>Assets<a class="headerlink" href="#assets" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resources</span></code> - build resources and their manifest files</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dolphin_ext</span></code> - process dolphin animations for the SD card</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">icons</span></code> - generate <code class="docutils literal notranslate"><span class="pre">.c+.h</span></code> for icons from PNG assets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proto</span></code> - generate <code class="docutils literal notranslate"><span class="pre">.pb.c+.pb.h</span></code> for <code class="docutils literal notranslate"><span class="pre">.proto</span></code> sources</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proto_ver</span></code> - generate <code class="docutils literal notranslate"><span class="pre">.h</span></code> with a protobuf version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dolphin_internal</span></code>, <code class="docutils literal notranslate"><span class="pre">dolphin_blocking</span></code> - generate <code class="docutils literal notranslate"><span class="pre">.c+.h</span></code> for corresponding dolphin assets</p></li>
+</ul>
+</section>
+</section>
+<section id="command-line-parameters">
+<h2>Command-line parameters<a class="headerlink" href="#command-line-parameters" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--options</span> <span class="pre">optionfile.py</span></code> (default value <code class="docutils literal notranslate"><span class="pre">fbt_options.py</span></code>) - load a file with multiple configuration values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--extra-int-apps=app1,app2,appN</span></code> - force listed apps to be built as internal with the <code class="docutils literal notranslate"><span class="pre">firmware</span></code> target</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--extra-ext-apps=app1,app2,appN</span></code> - force listed apps to be built as external with the <code class="docutils literal notranslate"><span class="pre">firmware_extapps</span></code> target</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--extra-define=A</span> <span class="pre">--extra-define=B=C</span> </code> - extra global defines that will be passed to the C/C++ compiler, can be specified multiple times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--proxy-env=VAR1,VAR2</span></code> - additional environment variables to expose to subprocesses spawned by <code class="docutils literal notranslate"><span class="pre">fbt</span></code>. By default, <code class="docutils literal notranslate"><span class="pre">fbt</span></code> sanitizes the execution environment and doesn’t forward all inherited environment variables. You can find the list of variables that are always forwarded in the <code class="docutils literal notranslate"><span class="pre">environ.scons</span></code> file.</p></li>
+</ul>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h2>
+<p>Default configuration variables are set in the configuration file: <code class="docutils literal notranslate"><span class="pre">fbt_options.py</span></code>.
+Values set in the command line have higher precedence over the configuration file.</p>
+<p>You can also create a file called <code class="docutils literal notranslate"><span class="pre">fbt_options_local.py</span></code> that will be evaluated when loading default options file, enabling persisent overriding of  default options without modifying default configuration.</p>
+<p>You can find out available options with <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">-h</span></code>.</p>
+<section id="firmware-application-set">
+<h3>Firmware application set<a class="headerlink" href="#firmware-application-set" title="Permalink to this heading"></a></h3>
+<p>You can create customized firmware builds by modifying the list of applications to be included in the build. Application presets are configured with the <code class="docutils literal notranslate"><span class="pre">FIRMWARE_APPS</span></code> option, which is a <code class="docutils literal notranslate"><span class="pre">map(configuration_name:str</span> <span class="pre">-&gt;</span> <span class="pre">application_list:tuple(str))</span></code>. To specify an application set to use in the build, set <code class="docutils literal notranslate"><span class="pre">FIRMWARE_APP_SET</span></code> to its name.
+For example, to build a firmware image with unit tests, run <code class="docutils literal notranslate"><span class="pre">./fbt</span> <span class="pre">FIRMWARE_APP_SET=unit_tests</span></code>.</p>
+<p>Check out <code class="docutils literal notranslate"><span class="pre">fbt_options.py</span></code> for details.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AppsOnSDCard.html" class="btn btn-neutral float-left" title="FAP (Flipper Application Package)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FuriHalDebugging.html" class="btn btn-neutral float-right" title="Furi HAL Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="fbt.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

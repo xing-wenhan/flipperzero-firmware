@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generating documentation &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Universal Remotes" href="UniversalRemotes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generating documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-documentation">Building documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-new-pages">Adding new pages</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Generating documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/GeneratingDocs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="generating-documentation">
+<h1>Generating documentation<a class="headerlink" href="#generating-documentation" title="Permalink to this heading"></a></h1>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/downloads/">Python 3.6+</a></p></li>
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/installation.html">Sphinx</a></p></li>
+<li><p><a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/installing.html">Sphinx RTD theme</a></p></li>
+<li><p><a class="reference external" href="https://www.doxygen.nl/download.html">Doxygen</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/doxysphinx/">Doxysphinx</a></p></li>
+<li><p>Sphinx-multiversion - install our <a class="reference external" href="https://github.com/flipperdevices/sphinx-multiversion/tree/hleb/submodules">fork</a> from the <code class="docutils literal notranslate"><span class="pre">hleb/submodules</span></code> branch, otherwise it won’t work with submodules.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/myst-parser/">Myst-parser</a></p></li>
+</ul>
+</section>
+<section id="building-documentation">
+<h2>Building documentation<a class="headerlink" href="#building-documentation" title="Permalink to this heading"></a></h2>
+<p>First, make sure to have all the submodules checked out:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+</pre></div>
+</div>
+<p>Then, run the following command to build the Doxygen part of the documentation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you are in the root of the repository</span>
+<span class="nb">cd</span><span class="w"> </span>flipperzero-documentation
+doxygen<span class="w"> </span>Doxyfile-awesome.cfg
+</pre></div>
+</div>
+<p>This will generate the Doxygen documentation in the <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> folder.</p>
+<p>Then, run the following command to convert the Doxygen files to reStructuredText:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you are in the flipperzero-documentation folder</span>
+doxysphinx<span class="w"> </span>build<span class="w"> </span>doxygen/html<span class="w"> </span>sphinx_out/<span class="w"> </span>Doxyfile-awesome.cfg
+</pre></div>
+</div>
+<p>If there are any changes to the existing .rst files, you’ll need to commit them for sphinx-multiversion to find them. It will not find uncommitted changes.</p>
+<p>Finally, run the following command to build the HTML documentation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you are in the flipperzero-documentation folder</span>
+<span class="nb">cd</span><span class="w"> </span>../<span class="w"> </span><span class="c1"># Go back to the root of the repository</span>
+sphinx-multiversion<span class="w"> </span>flipperzero-documentation<span class="w"> </span>flipperzero-documentation/sphinx_out/
+</pre></div>
+</div>
+<p>The HTML documentation will be generated in the <code class="docutils literal notranslate"><span class="pre">flipperzero-documentation/sphinx_out/&lt;BRANCH_NAME&gt;</span></code> folder. To make the Doxygen documentation prettier, you can run doxysphinx once again over the results, it’ll generate additional CSS files that will make the documentation look better, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you are in the flipperzero-documentation folder</span>
+doxysphinx<span class="w"> </span>build<span class="w"> </span>doxygen/html<span class="w"> </span>sphinx_out/&lt;BRANCH_NAME&gt;/doxygen/html/<span class="w"> </span>Doxyfile-awesome.cfg
+</pre></div>
+</div>
+<p>This needs to be done for every branch, as the CSS files are generated inside the branch folder.</p>
+</section>
+<section id="adding-new-pages">
+<h2>Adding new pages<a class="headerlink" href="#adding-new-pages" title="Permalink to this heading"></a></h2>
+<p>To add a new page, create a new .md file in the <code class="docutils literal notranslate"><span class="pre">flipperzero-documentation/docs</span></code> folder. Then, add the filename to the <code class="docutils literal notranslate"><span class="pre">flipperzero-documentation/docs/index.rst</span></code> file, so that it appears in the sidebar. You can look at the existing files for examples.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="UniversalRemotes.html" class="btn btn-neutral float-left" title="Universal Remotes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="GeneratingDocs.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

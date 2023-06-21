@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using FuriHalBus API &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats/index.html">Flipper Zero File Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Using FuriHalBus API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/FuriHalBus.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-furihalbus-api">
+<h1>Using FuriHalBus API<a class="headerlink" href="#using-furihalbus-api" title="Permalink to this heading"></a></h1>
+<section id="basic-info">
+<h2>Basic info<a class="headerlink" href="#basic-info" title="Permalink to this heading"></a></h2>
+<p>On system startup, most of the peripheral devices are under reset and not clocked by default. This is done to reduce power consumption and to guarantee that the device will always be in the same state before use.
+Some crucial peripherals are enabled right away by the system, others must be explicitly enabled by the user code.</p>
+<p><strong>NOTE:</strong> Here and afterwards the word <em>“system”</em> refers to any code belonging to the operating system, hardware drivers or built-in applications.</p>
+<p>To <strong>ENABLE</strong> a peripheral, call <code class="docutils literal notranslate"><span class="pre">furi_hal_bus_enable()</span></code>. At the time of the call, the peripheral in question MUST be disabled, otherwise a crash will occur to indicate improper use. This means that any given peripheral cannot be enabled twice or more without disabling it first.</p>
+<p>To <strong>DISABLE</strong> a peripheral, call <code class="docutils literal notranslate"><span class="pre">furi_hal_bus_disable()</span></code>. Likewise, the peripheral in question MUST be enabled, otherwise a crash will occur.</p>
+<p>To <strong>RESET</strong> a peripheral, call <code class="docutils literal notranslate"><span class="pre">furi_hal_bus_reset()</span></code>. The peripheral in question MUST be enabled, otherwise a crash will occur. This method is used whenever it is necessary to reset all the peripheral’s registers to their initial states without disabling it.</p>
+</section>
+<section id="peripherals">
+<h2>Peripherals<a class="headerlink" href="#peripherals" title="Permalink to this heading"></a></h2>
+<p>Built-in peripherals are divided into three categories:</p>
+<ul class="simple">
+<li><p>Enabled by the system on startup, never disabled;</p></li>
+<li><p>Enabled and disabled by the system on demand;</p></li>
+<li><p>Enabled and disabled by the user code.</p></li>
+</ul>
+<section id="always-on-peripherals">
+<h3>Always-on peripherals<a class="headerlink" href="#always-on-peripherals" title="Permalink to this heading"></a></h3>
+<p>Below is the list of peripherals that are enabled by the system. The user code must NEVER attempt to disable them. If a corresponding API is provided, the user code must employ it in order to access the peripheral.</p>
+<p><em>Table 1</em> - Peripherals enabled by the system</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Peripheral</p></th>
+<th class="head text-center"><p>Enabled at</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DMA1</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_dma.c</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DMA2</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DMAMUX</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>GPIOA</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_resources.c</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>GPIOB</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>GPIOC</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>GPIOD</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>GPIOE</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>GPIOH</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>PKA</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_bt.c</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AES2</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>HSEM</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IPCC</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>FLASH</p></td>
+<td class="text-center"><p>enabled by hardware</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="on-demand-system-peripherals">
+<h3>On-demand system peripherals<a class="headerlink" href="#on-demand-system-peripherals" title="Permalink to this heading"></a></h3>
+<p>Below is the list of peripherals that are enabled and disabled by the system. The user code must avoid using them directly, preferring the respective APIs instead.</p>
+<p>When not using the API, these peripherals MUST be enabled by the user code and then disabled when not needed anymore.</p>
+<p><em>Table 2</em> - Peripherals enabled and disabled by the system</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Peripheral</p></th>
+<th class="head text-center"><p>API header file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>RNG</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_random.h</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SPI1</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_spi.h</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SPI2</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>I2C1</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_i2c.h</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>I2C3</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>USART1</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_uart.h</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>LPUART1</p></td>
+<td class="text-center"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>USB</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">furi_hal_usb.h</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="on-demand-shared-peripherals">
+<h3>On-demand shared peripherals<a class="headerlink" href="#on-demand-shared-peripherals" title="Permalink to this heading"></a></h3>
+<p>Below is the list of peripherals that are not enabled by default and MUST be enabled by the user code each time it accesses them.</p>
+<p>Note that some of these peripherals may also be used by the system to implement its certain features.
+The system will take over any given peripheral only when the respective feature is in use.</p>
+<p><em>Table 3</em> - Peripherals enabled and disabled by user</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Peripheral</p></th>
+<th class="head text-center"><p>System</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CRC</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>TSC</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ADC</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>QUADSPI</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>TIM1</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>subghz, lfrfid, nfc, infrared, etc…</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>TIM2</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>TIM16</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>speaker</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>TIM17</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>LPTIM1</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>tickless idle timer</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LPTIM2</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>pwm</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAI1</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LCD</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="dma">
+<h2>DMA<a class="headerlink" href="#dma" title="Permalink to this heading"></a></h2>
+<p>The DMA1,2 peripherals are a special case in that they have multiple independent channels. Some of the channels may be in use by the system.</p>
+<p>Below is the list of DMA channels and their usage by the system.</p>
+<p><em>Table 4</em> - DMA channels</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>DMA</p></th>
+<th class="head text-center"><p>Channel</p></th>
+<th class="head text-center"><p>System</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DMA1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>digital signal</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>pulse reader</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DMA2</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>infrared, lfrfid, subghz</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>SPI</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>yes</p></td>
+<td><p>SPI</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>–</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="FuriHalBus.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

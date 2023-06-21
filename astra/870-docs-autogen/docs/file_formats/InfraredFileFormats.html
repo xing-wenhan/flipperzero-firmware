@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infrared Flipper File Formats &mdash; Flipper Zero Firmware  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LF RFID key file format" href="LfRfidFileFormat.html" />
+    <link rel="prev" title="iButton key file format" href="iButtonFileFormat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Flipper Zero Firmware
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../doxygen/html/index.html">Auto-generated</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Flipper Zero File Formats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BadUsbScriptFormat.html">BadUSB File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iButtonFileFormat.html">iButton key file format</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Infrared Flipper File Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#infrared-remote-file-format">Infrared Remote File Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#infrared-library-file-format">Infrared Library File Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Version history:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#infrared-test-file-format">Infrared Test File Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Version history:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="LfRfidFileFormat.html">LF RFID key file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NfcFileFormats.html">NFC Flipper File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html">File Formats for Flipper’s SubGhz Subsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SubGhzFileFormats.html#subghz-configuration-files">SubGhz configuration files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../AppManifests.html">Flipper Application Manifests (.fam)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppsOnSDCard.html">FAP (Flipper Application Package)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fbt.html">Flipper Build Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FuriHalDebugging.html">Furi HAL Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HardwareTargets.html">Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html">Key Combos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KeyCombo.html#alternative-ways-to-recover-your-device">Alternative ways to recover your device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LFRFIDRaw.html">Reading RAW RFID data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OTA.html">Executing code from RAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RoadMap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UnitTests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UniversalRemotes.html">Universal Remotes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GeneratingDocs.html">Generating documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Flipper Zero Firmware</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flipper Zero File Formats</a></li>
+      <li class="breadcrumb-item active">Infrared Flipper File Formats</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/file_formats/InfraredFileFormats.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="infrared-flipper-file-formats">
+<h1>Infrared Flipper File Formats<a class="headerlink" href="#infrared-flipper-file-formats" title="Permalink to this heading"></a></h1>
+<section id="infrared-remote-file-format">
+<h2>Infrared Remote File Format<a class="headerlink" href="#infrared-remote-file-format" title="Permalink to this heading"></a></h2>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Filetype: IR signals file
+Version: 1
+#
+name: Button_1
+type: parsed
+protocol: NECext
+address: EE 87 00 00
+command: 5D A0 00 00
+#
+name: Button_2
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 504 3432 502 483 500 484 510 502 502 482 501 485 509 1452 504 1458 509 1452 504 481 501 474 509 3420 503
+#
+name: Button_3
+type: parsed
+protocol: SIRC
+address: 01 00 00 00
+command: 15 00 00 00
+</pre></div>
+</div>
+</section>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
+<p>Filename extension: <code class="docutils literal notranslate"><span class="pre">.ir</span></code></p>
+<p>This file format is used to store an infrared remote that consists of an arbitrary number of buttons.
+Each button is separated from others by a comment character (<code class="docutils literal notranslate"><span class="pre">#</span></code>) for better readability.</p>
+<p>Known protocols are represented in the <code class="docutils literal notranslate"><span class="pre">parsed</span></code> form, whereas non-recognized signals may be saved and re-transmitted as <code class="docutils literal notranslate"><span class="pre">raw</span></code> data.</p>
+<section id="version-history">
+<h4>Version history:<a class="headerlink" href="#version-history" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Initial version.</p></li>
+</ol>
+</section>
+<section id="format-fields">
+<h4>Format fields<a class="headerlink" href="#format-fields" title="Permalink to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Use</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>both</p></td>
+<td><p>string</p></td>
+<td><p>Name of the button. Only printable ASCII characters are allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>both</p></td>
+<td><p>string</p></td>
+<td><p>Type of the signal. Must be <code class="docutils literal notranslate"><span class="pre">parsed</span></code> or <code class="docutils literal notranslate"><span class="pre">raw</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>protocol</p></td>
+<td><p>parsed</p></td>
+<td><p>string</p></td>
+<td><p>Name of the infrared protocol. Refer to <code class="docutils literal notranslate"><span class="pre">ir</span></code> console command for the complete list of supported protocols.</p></td>
+</tr>
+<tr class="row-odd"><td><p>address</p></td>
+<td><p>parsed</p></td>
+<td><p>hex</p></td>
+<td><p>Payload address. Must be 4 bytes long.</p></td>
+</tr>
+<tr class="row-even"><td><p>command</p></td>
+<td><p>parsed</p></td>
+<td><p>hex</p></td>
+<td><p>Payload command. Must be 4 bytes long.</p></td>
+</tr>
+<tr class="row-odd"><td><p>frequency</p></td>
+<td><p>raw</p></td>
+<td><p>uint32</p></td>
+<td><p>Carrier frequency, in Hertz, usually 38000 Hz.</p></td>
+</tr>
+<tr class="row-even"><td><p>duty_cycle</p></td>
+<td><p>raw</p></td>
+<td><p>float</p></td>
+<td><p>Carrier duty cycle, usually 0.33.</p></td>
+</tr>
+<tr class="row-odd"><td><p>data</p></td>
+<td><p>raw</p></td>
+<td><p>uint32</p></td>
+<td><p>Raw signal timings, in microseconds between logic level changes. Individual elements must be space-separated. Maximum timings amount is 1024.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="infrared-library-file-format">
+<h2>Infrared Library File Format<a class="headerlink" href="#infrared-library-file-format" title="Permalink to this heading"></a></h2>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#/assets/resources/infrared/assets/tv.ir"><span class="xref myst">TV Universal Library</span></a></p></li>
+<li><p><a class="reference internal" href="#/assets/resources/infrared/assets/ac.ir"><span class="xref myst">A/C Universal Library</span></a></p></li>
+<li><p><a class="reference internal" href="#/assets/resources/infrared/assets/audio.ir"><span class="xref myst">Audio Universal Library</span></a></p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Description<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>Filename extension: <code class="docutils literal notranslate"><span class="pre">.ir</span></code></p>
+<p>This file format is used to store universal remote libraries. It is identical to the previous format, differing only in the <code class="docutils literal notranslate"><span class="pre">Filetype</span></code> field.<br />
+It also has predefined button names for each universal library type, so that the universal remote application can understand them.
+See <a class="reference internal" href="#/documentation/UniversalRemotes.md"><span class="xref myst">Universal Remotes</span></a> for more information.</p>
+</section>
+<section id="id2">
+<h3>Version history:<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Initial version.</p></li>
+</ol>
+</section>
+</section>
+<section id="infrared-test-file-format">
+<h2>Infrared Test File Format<a class="headerlink" href="#infrared-test-file-format" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3>Examples<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>See <a class="reference internal" href="#/assets/unit_tests/infrared/"><span class="xref myst">Infrared Unit Tests</span></a> for various examples.</p>
+</section>
+<section id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>Filename extension: <code class="docutils literal notranslate"><span class="pre">.irtest</span></code></p>
+<p>This file format is used to store technical test data that is too large to keep directly in the firmware.
+It is mostly similar to the two previous formats, with the main difference being the addition of the parsed signal arrays.</p>
+<p>Each infrared protocol must have corresponding unit tests complete with an <code class="docutils literal notranslate"><span class="pre">.irtest</span></code> file.</p>
+<p>Known protocols are represented in the <code class="docutils literal notranslate"><span class="pre">parsed_array</span></code> form, whereas raw data has the <code class="docutils literal notranslate"><span class="pre">raw</span></code> type.<br />
+Note: a single parsed signal must be represented as an array of size 1.</p>
+</section>
+<section id="id5">
+<h3>Version history:<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Initial version.</p></li>
+</ol>
+<section id="id6">
+<h4>Format fields<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Use</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>both</p></td>
+<td><p>string</p></td>
+<td><p>Name of the signal. Only printable ASCII characters are allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>both</p></td>
+<td><p>string</p></td>
+<td><p>Type of the signal. Must be <code class="docutils literal notranslate"><span class="pre">parsed_array</span></code> or <code class="docutils literal notranslate"><span class="pre">raw</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>parsed_array</p></td>
+<td><p>uint32</p></td>
+<td><p>The number of parsed signals in an array. Must be at least 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p>protocol</p></td>
+<td><p>parsed_array</p></td>
+<td><p>string</p></td>
+<td><p>Same as in previous formats.</p></td>
+</tr>
+<tr class="row-even"><td><p>address</p></td>
+<td><p>parsed_array</p></td>
+<td><p>hex</p></td>
+<td><p>Ditto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>command</p></td>
+<td><p>parsed_array</p></td>
+<td><p>hex</p></td>
+<td><p>Ditto.</p></td>
+</tr>
+<tr class="row-even"><td><p>repeat</p></td>
+<td><p>parsed_array</p></td>
+<td><p>bool</p></td>
+<td><p>Indicates whether the signal is a repeated button press.</p></td>
+</tr>
+<tr class="row-odd"><td><p>frequency</p></td>
+<td><p>raw</p></td>
+<td><p>uint32</p></td>
+<td><p>Same as in previous formats.</p></td>
+</tr>
+<tr class="row-even"><td><p>duty_cycle</p></td>
+<td><p>raw</p></td>
+<td><p>float</p></td>
+<td><p>Ditto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>data</p></td>
+<td><p>raw</p></td>
+<td><p>uint32</p></td>
+<td><p>Ditto.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="signal-names">
+<h4>Signal names<a class="headerlink" href="#signal-names" title="Permalink to this heading"></a></h4>
+<p>The signal names in an <code class="docutils literal notranslate"><span class="pre">.irtest</span></code> file follow a convention <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;&lt;test_number&gt;</span></code>, where the name is one of:</p>
+<ul class="simple">
+<li><p>decoder_input</p></li>
+<li><p>decoder_expected</p></li>
+<li><p>encoder_decoder_input,</p></li>
+</ul>
+<p>and the number is a sequential integer: 1, 2, 3, etc., which produces names like <code class="docutils literal notranslate"><span class="pre">decoder_input1</span></code>, <code class="docutils literal notranslate"><span class="pre">encoder_decoder_input3</span></code>, and so on.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>decoder_input</p></td>
+<td><p>raw</p></td>
+<td><p>A raw signal containing the decoder input. Also used as the expected encoder output.</p></td>
+</tr>
+<tr class="row-odd"><td><p>decoder_expected</p></td>
+<td><p>parsed_array</p></td>
+<td><p>An array of parsed signals containing the expected decoder output. Also used as the encoder input.</p></td>
+</tr>
+<tr class="row-even"><td><p>encoder_decoder_input</p></td>
+<td><p>parsed_array</p></td>
+<td><p>An array of parsed signals containing both the encoder-decoder input and expected output.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See <a class="reference internal" href="#/documentation/UnitTests.md#infrared"><span class="xref myst">Unit Tests</span></a> for more info.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iButtonFileFormat.html" class="btn btn-neutral float-left" title="iButton key file format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LfRfidFileFormat.html" class="btn btn-neutral float-right" title="LF RFID key file format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Flipper Devices.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: astra/870-docs-autogen
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="InfraredFileFormats.html">astra/870-docs-autogen</a></dd>
+      <dd><a href="../../../docs-branches-test/index.html">astra/docs-branches-test</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
